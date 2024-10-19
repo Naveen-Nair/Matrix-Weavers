@@ -67,72 +67,72 @@ import 'react-vertical-timeline-component/style.min.css';
 
 export default function StrategicInitiatives() {
 
-  const timeline_data = [{"key":1, "title":"Title 1", "subtitle": "Subtitle 1", "description": "Description of the milestone", "indetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":2, "title":"Title 2", "subtitle": "Subtitle 2", "description": "Description of the milestone", "indetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":3, "title":"Title 3", "subtitle": "Subtitle 3", "description": "Description of the milestone", "indetail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":4, "title":"Title 4", "subtitle": "Subtitle 4", "description": "Description of the milestone", "indetail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}]
+  const timeline_data = [{company:"A", title:"Title 1", subtitle: "Subtitle 1", description: "Description of the milestone", indetail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 2", subtitle: "Subtitle 2", description: "Description of the milestone", indetail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 3", subtitle: "Subtitle 3", description: "Description of the milestone", indetail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 4", subtitle: "Subtitle 4", description: "Description of the milestone", indetail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}]
   const [initiative, setInitiative] = useState(0)
 
   const strategic_table = [
     {
-      "Retailer": "Croma",
-      "Investment Area": "Supply Chain",
-      "Year": 2023,
-      "Amount Invested": "$100M",
-      "Expected Impact": "10% cost savings"
+      company:"A",
+      investment_area: "Supply Chain",
+      year: 2023,
+      amount_invested: "$100M",
+      expected_impact: "10% cost savings"
     },
     {
-      "Retailer": "Reliance Digital",
-      "Investment Area": "Technology Upgrades",
-      "Year": 2022,
-      "Amount Invested": "$200M",
-      "Expected Impact": "Faster deliveries"
+      company:"A",
+      investment_area: "Technology Upgrades",
+      year: 2022,
+      amount_invested: "$200M",
+      expected_impact: "Faster deliveries"
     },
     {
-      "Retailer": "Vijay Sales",
-      "Investment Area": "Marketing",
-      "Year": 2023,
-      "Amount Invested": "$50M",
-      "Expected Impact": "Increased reach"
+      company:"A",
+      investment_area: "Marketing",
+      year: 2023,
+      amount_invested: "$50M",
+      expected_impact: "Increased reach"
     },
     {
-      "Retailer": "Bajaj Electronics",
-      "Investment Area": "Customer Service",
-      "Year": 2022,
-      "Amount Invested": "$30M",
-      "Expected Impact": "Improved customer satisfaction"
+      company:"A",
+      investment_area: "Customer Service",
+      year: 2022,
+      amount_invested: "$30M",
+      expected_impact: "Improved customer satisfaction"
     },
     {
-      "Retailer": "Poojara",
-      "Investment Area": "Store Expansion",
-      "Year": 2021,
-      "Amount Invested": "$40M",
-      "Expected Impact": "25 new stores opened"
+      company:"A",
+      investment_area: "Store Expansion",
+      year: 2021,
+      amount_invested: "$40M",
+      expected_impact: "25 new stores opened"
     },
     {
-      "Retailer": "Aditya Vision",
-      "Investment Area": "Private Labels",
-      "Year": 2023,
-      "Amount Invested": "$70M",
-      "Expected Impact": "Increased profit margins by 12%"
+      company:"A",
+      investment_area: "Private Labels",
+      year: 2023,
+      amount_invested: "$70M",
+      expected_impact: "Increased profit margins by 12%"
     },
     {
-      "Retailer": "Reliance Digital",
-      "Investment Area": "E-commerce Platform",
-      "Year": 2023,
-      "Amount Invested": "$150M",
-      "Expected Impact": "Enhanced online customer experience"
+      company:"A",
+      investment_area: "E-commerce Platform",
+      year: 2023,
+      amount_invested: "$150M",
+      expected_impact: "Enhanced online customer experience"
     },
     {
-      "Retailer": "Croma",
-      "Investment Area": "Sustainability Initiatives",
-      "Year": 2022,
-      "Amount Invested": "$60M",
-      "Expected Impact": "Reduced carbon footprint by 15%"
+      company:"A",
+      investment_area: "Sustainability Initiatives",
+      year: 2022,
+      amount_invested: "$60M",
+      expected_impact: "Reduced carbon footprint by 15%"
     },
     {
-      "Retailer": "Vijay Sales",
-      "Investment Area": "AI-based Customer Insights",
-      "Year": 2021,
-      "Amount Invested": "$90M",
-      "Expected Impact": "Optimized marketing campaigns"
+      company:"A",
+      investment_area: "AI-based Customer Insights",
+      year: 2021,
+      amount_invested: "$90M",
+      expected_impact: "Optimized marketing campaigns"
     }
   ]
   
@@ -177,10 +177,10 @@ export default function StrategicInitiatives() {
         >
           <CardBody w="100%" h="100%" display="flex" flexDirection="column">
           <Text color="#fff" fontSize="1.9em" fontWeight="bold" mb="20px">
-            {timeline_data[initiative]["title"]}
+            {timeline_data[initiative].title}
           </Text>
           <Text color="gray.400" fontSize="1.2em">
-            {timeline_data[initiative]["indetail"]}
+            {timeline_data[initiative].indetail}
           </Text>
           </CardBody>
         </Card>
@@ -229,28 +229,28 @@ export default function StrategicInitiatives() {
                     fontFamily="Plus Jakarta Display"
                     borderBottomColor="#56577A"
                   >
-                    {company["Investment Area"]}
+                    {company.investment_area}
                   </Td>
                   <Td
                     color="gray.400"
                     fontFamily="Plus Jakarta Display"
                     borderBottomColor="#56577A"
                   >
-                    {company["Year"]}
+                    {company.year}
                   </Td>
                   <Td
                     color="gray.400"
                     fontFamily="Plus Jakarta Display"
                     borderBottomColor="#56577A"
                   >
-                    {company["Amount Invested"]}
+                    {company.amount_invested}
                   </Td>
                   <Td
                     color="gray.400"
                     fontFamily="Plus Jakarta Display"
                     borderBottomColor="#56577A"
                   >
-                    {company["Expected Impact"]}
+                    {company.expected_impact}
                   </Td>
                 </Tr>
               ))}
