@@ -1,0 +1,30 @@
+{
+  "name": "transfinitte-backend",
+  "version": "1.0.0",
+  "description": "Official Backend Codebase for Transfinitte hackathon 24",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Naveen-Nair/Matrix-Weavers"
+  },
+  "author": "Matrix Weavers 24",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naveen-Nair/Matrix-Weavers/issues"
+  },
+  "homepage": "https://github.com/Naveen-Nair/Matrix-Weavers#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.12",
+    "nodemailer": "^6.4.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
