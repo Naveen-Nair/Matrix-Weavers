@@ -9,13 +9,13 @@ import Typography from '@material-ui/core/Typography';
 const App = () => {
   return (
     <React.Fragment>
-      <AppBar style={{ position: 'relative', backgroundColor: '#509609' }}>
+      {/* <AppBar style={{ position: 'relative', backgroundColor: '#509609' }}>
         <Toolbar>
           <Typography variant="h6" style={{ marginLeft: '2px', flex: 1 }}>
               India
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <CssBaseline />
       <Container maxWidth="md">
           <AreaSelector />

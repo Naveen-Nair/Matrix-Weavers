@@ -16,11 +16,15 @@ const AreaSelector = () => {
     const handleClose = () => setShow(false);
 
     return (
+        <React.Fragment>
+        <MapDialog show={show} StateName={STName} closeModal={handleClose} />
         <div style={{ backgroundColor: 'black' }}>
             <MapChart setTooltipContent={setContent} setStateName={setSTName} setShowDistrict={setShow} />
             <div data-tooltip-id="my-tooltip" data-tooltip-content={content}>Hover over me</div>
             <Tooltip id="my-tooltip" />
         </div>
+
+    </React.Fragment>
 
     );
 }
