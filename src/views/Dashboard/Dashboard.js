@@ -382,6 +382,7 @@ export default function Dashboard() {
 						</Flex>
 					</CardHeader>
 					<Box w='100%' minH={{ sm: '300px' }}>
+					{console.log(lineChartOptionsDashboard)}
 						<LineChart
 							lineChartData={lineChartDataDashboard}
 							lineChartOptions={lineChartOptionsDashboard}

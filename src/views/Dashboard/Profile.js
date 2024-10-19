@@ -221,7 +221,7 @@ function Profile() {
 									variant='vision'>
 									<CircularProgressLabel>
 										<Flex direction='column' justify='center' align='center'>
-											<LightningIcon w='14px' h='22px' mb='8px' />
+											{/* <LightningIcon w='14px' h='22px' mb='8px' /> */}
 											<Text color='#fff' fontSize='36px' fontWeight='bold' mb='6px'>
 												68%
 											</Text>

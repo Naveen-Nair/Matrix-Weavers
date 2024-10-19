@@ -19,7 +19,7 @@ import avatar1 from "assets/img/avatars/avatar1.png";
 import avatar2 from "assets/img/avatars/avatar2.png";
 import avatar3 from "assets/img/avatars/avatar3.png";
 // Custom Icons
-import { ProfileIcon, SettingsIcon } from "components/Icons/Icons";
+import { ProfileIcon } from "components/Icons/Icons";
 // Custom Components
 import { ItemContent } from "components/Menu/ItemContent";
 import { SidebarResponsive } from "components/Sidebar/Sidebar";
@@ -117,21 +117,9 @@ export default function HeaderLinks(props) {
         // logo={logo}
         {...rest}
       />
-      <SettingsIcon
-        cursor='pointer'
-        ms={{ base: "16px", xl: "0px" }}
-        me='16px'
-        ref={settingsRef}
-        onClick={props.onOpen}
-        color={navbarIcon}
-        w='18px'
-        h='18px'
-      />
-      <Menu>
-        <MenuButton align='center'>
-          <BellIcon color={navbarIcon} mt='-4px' w='18px' h='18px' />
-        </MenuButton>
 
+      <Menu>
+ 
         <MenuList
           border='transparent'
           backdropFilter='blur(63px)'
@@ -169,7 +157,6 @@ export default function HeaderLinks(props) {
               _focus={{
                 bg: "transparent",
               }}
-              _hover={{ bg: "transparent" }}
               mb='10px'>
               <ItemContent
                 time='2 days ago'

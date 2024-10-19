@@ -66,9 +66,7 @@ function Sidebar(props) {
                 xl: "16px",
               }}
               py='12px'>
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
+              {prop.name}
             </Text>
             {createLinks(prop.views)}
           </>
@@ -122,9 +120,7 @@ function Sidebar(props) {
                   </IconBox>
                 )}
                 <Text color={activeColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
+                  {prop.name}
                 </Text>
               </Flex>
             </Button>
@@ -171,9 +167,7 @@ function Sidebar(props) {
                   </IconBox>
                 )}
                 <Text color={inactiveColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
+                  {prop.name}
                 </Text>
               </Flex>
             </Button>
@@ -288,9 +282,7 @@ export function SidebarResponsive(props) {
                 xl: "16px",
               }}
               py='12px'>
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
+              {prop.name}
             </Text>
             {createLinks(prop.views)}
           </>
@@ -340,9 +332,7 @@ export function SidebarResponsive(props) {
                   </IconBox>
                 )}
                 <Text color={activeColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
+                  {prop.name}
                 </Text>
               </Flex>
             </Button>
@@ -388,9 +378,7 @@ export function SidebarResponsive(props) {
                   </IconBox>
                 )}
                 <Text color={inactiveColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
+                   {prop.name}
                 </Text>
               </Flex>
             </Button>
@@ -449,7 +437,7 @@ export function SidebarResponsive(props) {
       <Drawer
         isOpen={isOpen}
         onClose={onClose}
-        placement={document.documentElement.dir === "rtl" ? "right" : "left"}
+        placement= "left"
         finalFocusRef={btnRef}>
         <DrawerOverlay />
         <DrawerContent
