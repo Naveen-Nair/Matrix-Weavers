@@ -49,13 +49,14 @@ import {
 	lineChartOptionsDashboard
 } from 'variables/charts';
 import { dashboardTableData, timelineData } from 'variables/general';
+import Map from "../Map/index.js"
 
 export default function Dashboard() {
 	return (
 		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
 			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
 				<Card>
-	
+					<Map />
 				</Card>
 			</Grid>
 		</Flex>
