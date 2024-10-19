@@ -1,400 +1,481 @@
- 
 // Chakra imports
 import {
-	Box,
-	Button,
-	CircularProgress,
-	CircularProgressLabel,
-	Flex,
-	Grid,
-	Icon,
-	Progress,
-	SimpleGrid,
-	Spacer,
-	Stack,
-	Stat,
-	StatHelpText,
-	StatLabel,
-	StatNumber,
-	Table,
-	Tbody,
-	Text,
-	Th,
-	Thead,
-	Tr
-} from '@chakra-ui/react';
-// Styles for the circular progressbar
-import medusa from 'assets/img/cardimgfree.png';
-// Custom components
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CardHeader from 'components/Card/CardHeader.js';
-import BarChart from 'components/Charts/BarChart';
-import LineChart from 'components/Charts/LineChart';
-import IconBox from 'components/Icons/IconBox';
-import { FaPencilAlt, FaRegCalendarAlt } from "react-icons/fa";
-import CommentsRow from "components/Tables/CommentsRow";
+  Box,
+  Button,
+  CircularProgress,
+  CircularProgressLabel,
+  Flex,
+  Grid,
+  Icon,
+  Progress,
+  SimpleGrid,
+  Spacer,
+  Stack,
+  Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  Table,
+  Tbody,
+  Text,
+  Th,
+  Thead,
+  Td,
+  Tr,
+} from "@chakra-ui/react";
 
+import Chart from "react-apexcharts";
+
+import { useState, useEffect } from "react";
+// Styles for the circular progressbar
+import medusa from "assets/img/cardimgfree.png";
+// Custom components
+import Card from "components/Card/Card.js";
+import CardBody from "components/Card/CardBody.js";
+import CardHeader from "components/Card/CardHeader.js";
+import BarChart from "components/Charts/BarChart";
+import LineChart from "components/Charts/LineChart";
+import IconBox from "components/Icons/IconBox";
+import { FaPencilAlt, FaRegCalendarAlt } from "react-icons/fa";
 
 // Icons
-import { CartIcon, DocumentIcon, GlobeIcon, RocketIcon, StatsIcon, WalletIcon } from 'components/Icons/Icons.js';
-import DashboardTableRow from 'components/Tables/DashboardTableRow';
-import TimelineRow from 'components/Tables/TimelineRow';
-import React from 'react';
-import { AiFillCheckCircle } from 'react-icons/ai';
-import { BiHappy } from 'react-icons/bi';
-import { BsArrowRight } from 'react-icons/bs';
-import { IoCheckmarkDoneCircleSharp, IoEllipsisHorizontal } from 'react-icons/io5';
+import {
+  CartIcon,
+  DocumentIcon,
+  GlobeIcon,
+  RocketIcon,
+  StatsIcon,
+  WalletIcon,
+} from "components/Icons/Icons.js";
+import DashboardTableRow from "components/Tables/DashboardTableRow";
+import TimelineRow from "components/Tables/TimelineRow";
+import React from "react";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { BiHappy } from "react-icons/bi";
+import { BsArrowRight } from "react-icons/bs";
+import {
+  IoCheckmarkDoneCircleSharp,
+  IoEllipsisHorizontal,
+} from "react-icons/io5";
 // Data
 import {
-	barChartDataDashboard,
-	barChartOptionsDashboard,
-	lineChartDataDashboard,
-	lineChartOptionsDashboard
-} from 'variables/charts';
-import { dashboardTableData, timelineData } from 'variables/general';
-import MapStateDistrict from "../../components/MapStateDistrict/index.js"
-import MapStateHeatMap from "../../components/MapStateHeatMap/index.js"
-import CompanyDropDown from "../../components/CompanyDropdown/index.js"
+  barChartDataDashboard,
+  barChartOptionsDashboard,
+  lineChartDataDashboard,
+  lineChartOptionsDashboard,
+} from "variables/charts";
+import { dashboardTableData, timelineData } from "variables/general";
+import MapStateDistrict from "../../components/MapStateDistrict/index.js";
+import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
+import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
 // Data
 import {
-	billingData,
-	invoicesData,
-	newestTransactions,
-	olderTransactions,
-  } from "variables/general";
+  billingData,
+  invoicesData,
+  newestTransactions,
+  olderTransactions,
+} from "variables/general";
 
-  const newestComments = [
-	{
-	  id: 1,
-	  name: "John Doe",
-	  logo: "path/to/logo1.svg", // Replace with actual logo paths
-	  date: "2024-10-19",
-	  sentiment: "positive",
-	  summary: "Great service and quick delivery!"
-	},
-	{
-	  id: 2,
-	  name: "Jane Smith",
-	  logo: "path/to/logo2.svg", // Replace with actual logo paths
-	  date: "2024-10-18",
-	  sentiment: "neutral",
-	  summary: "The product was okay, not what I expected."
-	},
-	{
-	  id: 3,
-	  name: "Raj Patel",
-	  logo: "path/to/logo3.svg", // Replace with actual logo paths
-	  date: "2024-10-17",
-	  sentiment: "negative",
-	  summary: "Very disappointed with the quality."
-	},
-	{
-	  id: 4,
-	  name: "Emily Johnson",
-	  logo: "path/to/logo4.svg", // Replace with actual logo paths
-	  date: "2024-10-16",
-	  sentiment: "positive",
-	  summary: "Loved the new features, very user-friendly!"
-	},
-	{
-	  id: 5,
-	  name: "Suresh Kumar",
-	  logo: "path/to/logo5.svg", // Replace with actual logo paths
-	  date: "2024-10-15",
-	  sentiment: "negative",
-	  summary: "Had issues with customer support."
-	},
-  ];
-  const olderComments = [
-	{
-	  id: 6,
-	  name: "Alice Williams",
-	  logo: "path/to/logo6.svg", // Replace with actual logo paths
-	  date: "2024-10-14",
-	  sentiment: "positive",
-	  summary: "Fantastic experience, highly recommend!"
-	},
-	{
-	  id: 7,
-	  name: "David Brown",
-	  logo: "path/to/logo7.svg", // Replace with actual logo paths
-	  date: "2024-10-13",
-	  sentiment: "neutral",
-	  summary: "Average service, nothing exceptional."
-	},
-	{
-	  id: 8,
-	  name: "Priya Singh",
-	  logo: "path/to/logo8.svg", // Replace with actual logo paths
-	  date: "2024-10-12",
-	  sentiment: "negative",
-	  summary: "Received a damaged product, not happy."
-	},
-  ];
-	
 const data = {
-	"Andaman & Nicobar Island": {
-	  value: 150
-	},
-	"Andhra Pradesh": {
-	  value: 470
-	},
-	"Arunanchal Pradesh": {
-	  value: 248
-	},
-	Assam: {
-	  value: 528
-	},
-	Bihar: {
-	  value: 755
-	},
-	Chandigarh: {
-	  value: 95
-	},
-	Chhattisgarh: {
-	  value: 1700
-	},
-	Delhi: {
-	  value: 1823
-	},
-	Goa: {
-	  value: 508
-	},
-	Gujarat: {
-	  value: 624
-	},
-	Haryana: {
-	  value: 1244
-	},
-	"Himachal Pradesh": {
-	  value: 640
-	},
-	"Jammu & Kashmir": {
-	  value: 566
-	},
-	Jharkhand: {
-	  value: 814
-	},
-	Karnataka: {
-	  value: 2482
-	},
-	Kerala: {
-	  value: 899
-	},
-	Lakshadweep: {
-	  value: 15
-	},
-	"Madhya Pradesh": {
-	  value: 1176
-	},
-	Maharashtra: {
-	  value: 727
-	},
-	Manipur: {
-	  value: 314
-	},
-	Meghalaya: {
-	  value: 273
-	},
-	Mizoram: {
-	  value: 306
-	},
-	Nagaland: {
-	  value: 374
-	},
-	Odisha: {
-	  value: 395
-	},
-	Puducherry: {
-	  value: 245
-	},
-	Punjab: {
-	  value: 786
-	},
-	Rajasthan: {
-	  value: 1819
-	},
-	Sikkim: {
-	  value: 152
-	},
-	"Tamil Nadu": {
-	  value: 2296
-	},
-	Telangana: {
-	  value: 467
-	},
-	Tripura: {
-	  value: 194
-	},
-	"Uttar Pradesh": {
-	  value: 2944
-	},
-	Uttarakhand: {
-	  value: 1439
-	},
-	"West Bengal": {
-	  value: 1321
-	}
-  }
-  const overallSatisfactonRate = 80
-  const dateRange = "17 - 20/10/2024"
+  "Andaman & Nicobar Island": {
+    value: 150,
+  },
+  "Andhra Pradesh": {
+    value: 470,
+  },
+  "Arunanchal Pradesh": {
+    value: 248,
+  },
+  Assam: {
+    value: 528,
+  },
+  Bihar: {
+    value: 755,
+  },
+  Chandigarh: {
+    value: 95,
+  },
+  Chhattisgarh: {
+    value: 1700,
+  },
+  Delhi: {
+    value: 1823,
+  },
+  Goa: {
+    value: 508,
+  },
+  Gujarat: {
+    value: 624,
+  },
+  Haryana: {
+    value: 1244,
+  },
+  "Himachal Pradesh": {
+    value: 640,
+  },
+  "Jammu & Kashmir": {
+    value: 566,
+  },
+  Jharkhand: {
+    value: 814,
+  },
+  Karnataka: {
+    value: 2482,
+  },
+  Kerala: {
+    value: 899,
+  },
+  Lakshadweep: {
+    value: 15,
+  },
+  "Madhya Pradesh": {
+    value: 1176,
+  },
+  Maharashtra: {
+    value: 727,
+  },
+  Manipur: {
+    value: 314,
+  },
+  Meghalaya: {
+    value: 273,
+  },
+  Mizoram: {
+    value: 306,
+  },
+  Nagaland: {
+    value: 374,
+  },
+  Odisha: {
+    value: 395,
+  },
+  Puducherry: {
+    value: 245,
+  },
+  Punjab: {
+    value: 786,
+  },
+  Rajasthan: {
+    value: 1819,
+  },
+  Sikkim: {
+    value: 152,
+  },
+  "Tamil Nadu": {
+    value: 2296,
+  },
+  Telangana: {
+    value: 467,
+  },
+  Tripura: {
+    value: 194,
+  },
+  "Uttar Pradesh": {
+    value: 2944,
+  },
+  Uttarakhand: {
+    value: 1439,
+  },
+  "West Bengal": {
+    value: 1321,
+  },
+};
+const companiesData = [
+  {
+    name: "Reliance Digital",
+    numberOfStates: 15,
+    storeCount: 200,
+    storesRented: 120,
+    storesOwned: 80,
+    storeFormats: ["Retail", "Warehouse"],
+  },
+  {
+    name: "Vijay Sales",
+    numberOfStates: 10,
+    storeCount: 150,
+    storesRented: 90,
+    storesOwned: 60,
+    storeFormats: ["Retail"],
+  },
+  {
+    name: "Aditya Vision",
+    numberOfStates: 8,
+    storeCount: 100,
+    storesRented: 50,
+    storesOwned: 50,
+    storeFormats: ["Retail", "Franchise"],
+  },
+  {
+    name: "Poojara",
+    numberOfStates: 12,
+    storeCount: 120,
+    storesRented: 70,
+    storesOwned: 50,
+    storeFormats: ["Retail", "Outlet"],
+  },
+  {
+    name: "Bajaj Electronics",
+    numberOfStates: 14,
+    storeCount: 180,
+    storesRented: 100,
+    storesOwned: 80,
+    storeFormats: ["Retail", "E-commerce"],
+  },
+];
+
+const barChartData = [
+  {
+    name: "Reliance Digital",
+    data: [200], // Number of stores
+  },
+  {
+    name: "Vijay Sales",
+    data: [150],
+  },
+  {
+    name: "Aditya Vision",
+    data: [100],
+  },
+  {
+    name: "Poojara",
+    data: [120],
+  },
+  {
+    name: "Bajaj Electronics",
+    data: [180],
+  },
+];
+
+const barChartOptions = {
+  chart: {
+    type: "bar",
+    height: 350,
+    toolbar: {
+      show: false,
+    },
+  },
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      columnWidth: "55%",
+      endingShape: "rounded",
+    },
+  },
+  dataLabels: {
+    enabled: true,
+  },
+  xaxis: {
+    categories: ["Total Stores"], // Label for the x-axis
+  },
+  fill: {
+    colors: ["#1E90FF"], // Bar color
+  },
+  title: {
+    text: "Total Number of Stores by Company",
+    align: "center",
+    style: {
+      fontSize: "20px",
+      fontWeight: "bold",
+      color: "#fff",
+    },
+  },
+  grid: {
+    borderColor: "#444",
+  },
+};
+
 export default function Dashboard() {
-	return (
-		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }} gap="20px">
-				<Card>
-				<CompanyDropDown />
+  return (
+    <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }} gap="20px">
+      <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
+        <CardHeader p="6px 0px 22px 0px">
+          <Text fontSize="lg" color="#fff" fontWeight="bold">
+            Companies Overview
+          </Text>
+        </CardHeader>
+        <CardBody>
+          <Table variant="simple" color="#fff">
+            <Thead>
+              <Tr my=".8rem" ps="0px" color="gray.400">
+                <Th
+                  ps="0px"
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Company Name
+                </Th>
+                <Th
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Number of States
+                </Th>
+                <Th
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Store Count
+                </Th>
+                <Th
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Stores Rented
+                </Th>
+                <Th
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Stores Owned
+                </Th>
+                <Th
+                  color="gray.400"
+                  fontFamily="Plus Jakarta Display"
+                  borderBottomColor="#56577A"
+                >
+                  Store Formats
+                </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {companiesData.map((company, index) => (
+                <Tr key={index}>
+                  <Td
+                    ps="0px"
+                    color="#fff"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.name}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.numberOfStates}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.storeCount}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.storesRented}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.storesOwned}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company.storeFormats.join(", ")}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </CardBody>
+      </Card>
 
-				</Card>
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
-	
-				<Card>
-					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
-						Store Distribution
-					</Text>
-					<MapStateHeatMap data={data} titleText="" legendTitleText="Number of stores deployed" />
-				</Card>
-			</Grid>
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '1fr 2fr' }} gap='24px'>
-				<div>
-				<Card gridArea={{ md: '2 / 1 / 3 / 2', '2xl': 'auto' }}>
-					<CardHeader mb='24px'>
-						<Flex direction='column'>
-							<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
-								Overall Satisfaction Rate
-							</Text>
-							<Text color='gray.400' fontSize='sm'>
-								Across all regions
-							</Text>
-						</Flex>
-					</CardHeader>
-					<Flex direction='column' justify='center' align='center'>
-						<Box zIndex='-1'>
-							<CircularProgress
-								size={200}
-								value={overallSatisfactonRate}
-								thickness={6}
-								color='#582CFF'
-								variant='vision'
-								rounded>
-								<CircularProgressLabel>
-									<IconBox mb='20px' mx='auto' bg='brand.200' borderRadius='50%' w='48px' h='48px'>
-										<Icon as={BiHappy} color='#fff' w='30px' h='30px' />
-									</IconBox>
-								</CircularProgressLabel>
-							</CircularProgress>
-						</Box>
-						<Stack
-							direction='row'
-							spacing={{ sm: '42px', md: '68px' }}
-							justify='center'
-							maxW={{ sm: '270px', md: '300px', lg: '100%' }}
-							mx={{ sm: 'auto', md: '0px' }}
-							p='18px 22px'
-							bg='linear-gradient(126.97deg, rgb(6, 11, 40) 28.26%, rgba(10, 14, 35) 91.2%)'
-							borderRadius='20px'
-							position='absolute'
-							bottom='5%'>
-							<Text fontSize='xs' color='gray.400'>
-								0%
-							</Text>
-							<Flex direction='column' align='center' minW='80px'>
-								<Text color='#fff' fontSize='28px' fontWeight='bold'>
-									{overallSatisfactonRate}%
-								</Text>
-								<Text fontSize='xs' color='gray.400'>
-									Based on likes
-								</Text>
-							</Flex>
-							<Text fontSize='xs' color='gray.400'>
-								100%
-							</Text>
-						</Stack>
-					</Flex>
-				</Card>
-				<Card my='24px'>
-      <CardHeader mb='12px'>
-        <Flex direction='column' w='100%'>
-          <Flex
-            direction={{ sm: "column", lg: "row" }}
-            justify={{ sm: "center", lg: "space-between" }}
-            align={{ sm: "center" }}
-            w='100%'
-            my={{ md: "12px" }}>
-            <Text
-              color='#fff'
-              fontSize={{ sm: "lg", md: "xl", lg: "lg" }}
-              fontWeight='bold'>
-              Recently Scraped Comments
-            </Text>
-            <Flex align='center'>
-              <Icon
-                as={FaRegCalendarAlt}
-                color='gray.400'
-                w='15px'
-                h='15px'
-                me='6px'
-              />
-              <Text color='gray.400' fontSize='sm'>
-                {dateRange}
-              </Text>
-            </Flex>
-          </Flex>
-        </Flex>
-      </CardHeader>
-      <CardBody>
-        <Flex direction='column' w='100%'>
-          <Text color='gray.400' fontSize='xs' mb='18px'>
-            NEWEST
+      <Card>
+        <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
+          Detailed Overview
+        </Text>
+        <CompanyDropDown />
+      </Card>
+      <Grid
+        templateColumns={{ sm: "1fr 1fr", md: "1fr 1fr", lg: "1fr 1fr" }}
+        gap="24px"
+      >
+        <SuggestionsCard />
+
+        <InsightsSummary />
+      </Grid>
+      <Grid
+        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
+        gap="24px"
+      >
+        <Card>
+          <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
+            Store Distribution
           </Text>
-          {newestComments.map((comment) => {
-            return (
-              <CommentsRow
-                key={comment.id} // Assuming comment has a unique id
-                name={comment.name}
-                logo={comment.logo}
-                date={comment.date}
-                sentiment={comment.sentiment} // Assume sentiment is a string (e.g., 'positive', 'negative', 'neutral')
-                summary={comment.summary} // Short summary from sentiment analysis
-              />
-            );
-          })}
-          <Text color='gray.400' fontSize='xs' my='18px'>
-            OLDER
+          <MapStateHeatMap
+            data={data}
+            titleText=""
+            legendTitleText="Number of stores deployed"
+          />
+        </Card>
+      </Grid>
+
+      <Grid
+        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
+        gap="24px"
+      >
+        <Card>
+          <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
+            State Map Data
           </Text>
-          {olderComments.map((comment) => {
-            return (
-              <CommentsRow
-                key={comment.id} // Assuming comment has a unique id
-                name={comment.name}
-                logo={comment.logo}
-                date={comment.date}
-                sentiment={comment.sentiment}
-                summary={comment.summary}
-              />
-            );
-          })}
-        </Flex>
-      </CardBody>
+          <MapStateDistrict />
+        </Card>
+      </Grid>
+    </Flex>
+  );
+}
+
+function InsightsSummary({}) {
+  const summary = `
+	Croma currently operates in 5 states with a total of 10 stores. 
+	The company holds a market share of 12%, with its strongest presence in regions such as 15. 
+	Over the past year, it has experienced a growth rate of 5%.
+  `;
+
+  return (
+    <Card>
+      <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
+        Insights Summary
+      </Text>
+      <Text color="gray.400" fontSize="md">
+        {summary}
+      </Text>
     </Card>
-				</div>
-				<Card>
-					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
-						Customer Feedback Sentiment Distribution
-					</Text>
-					<MapStateHeatMap data={data} titleText="" legendTitleText="Sentiments analysis" />
-				</Card>
-			</Grid>
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
+  );
+}
 
-				<Card>
-					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
-						State Map Data
-					</Text>
-					<MapStateDistrict />
-				</Card>
-			</Grid>
-		</Flex>
-	);
+function SuggestionsCard({}) {
+  const suggestions = `
+		Croma should consider increasing its store presence in underperforming regions like . 
+		There's also a growth opportunity in , where competitors like  
+		hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories, 
+		Croma could challenge the largest competitors such as .
+		`;
+
+  return (
+    <Card>
+      <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
+        Strategic Suggestions
+      </Text>
+      <Text color="gray.400" fontSize="md">
+        {suggestions}
+      </Text>
+    </Card>
+  );
 }
