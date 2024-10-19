@@ -50,7 +50,7 @@ import {
 } from 'variables/charts';
 import { dashboardTableData, timelineData } from 'variables/general';
 
-export default function Dashboard() {
+export default function FutureOutlook() {
 	return (
 		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
 			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} my='26px' gap='18px'>

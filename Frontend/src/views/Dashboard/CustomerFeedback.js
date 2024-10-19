@@ -36,7 +36,7 @@ import {
   olderTransactions,
 } from "variables/general";
 
-function Billing() {
+function CustomerFeedback() {
 
   return (
     <Flex direction='column' pt={{ base: "120px", md: "75px" }} mx='auto'>
@@ -381,4 +381,4 @@ function Billing() {
   );
 }
 
-export default Billing;
+export default CustomerFeedback;
