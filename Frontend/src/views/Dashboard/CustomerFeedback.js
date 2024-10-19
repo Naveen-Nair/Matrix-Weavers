@@ -10,6 +10,12 @@ import {
   Spacer,
   Text,
   Stack,
+  Table,
+  Th,
+  Tr,
+  Td,
+  Thead,
+  Tbody,
 } from "@chakra-ui/react";
 
 // Images
@@ -50,6 +56,74 @@ import {
 } from "variables/general";
 
 function CustomerFeedback() {
+  const feedbackData = [
+    {
+      name: "Reliance Digital",
+      totalReviews: 1200,
+      averageReviewScore: 4.2,
+      nps: 72,
+      customerSatisfaction: "High",
+      positiveSentiment: 85,
+      customerServiceRating: 4.1,
+      feedbackHighlight:
+        "Customers appreciate the vast range of products and competitive pricing. Many customers highlight the knowledgeable staff and prompt in-store assistance.",
+      improvementAreas:
+        "Many reviews mention the need for faster after-sales service, especially for high-value items. Delivery times for online orders could also be improved.",
+    },
+    {
+      name: "Vijay Sales",
+      totalReviews: 900,
+      averageReviewScore: 3.8,
+      nps: 68,
+      customerSatisfaction: "Moderate",
+      positiveSentiment: 78,
+      customerServiceRating: 3.7,
+      feedbackHighlight:
+        "Vijay Sales is praised for its festive season discounts and offers. Customers also appreciate the easy return policy and store layout.",
+      improvementAreas:
+        "There are frequent complaints about delayed deliveries for online orders and a need for more proactive customer support for technical issues.",
+    },
+    {
+      name: "Aditya Vision",
+      totalReviews: 600,
+      averageReviewScore: 3.9,
+      nps: 65,
+      customerSatisfaction: "Moderate",
+      positiveSentiment: 75,
+      customerServiceRating: 3.6,
+      feedbackHighlight:
+        "Customers are satisfied with the in-store shopping experience and appreciate the personalized service provided by the staff in smaller stores.",
+      improvementAreas:
+        "Limited product variety and geographic reach are common concerns. Customers suggest expanding the store network and product offerings, particularly in smaller cities.",
+    },
+    {
+      name: "Poojara",
+      totalReviews: 500,
+      averageReviewScore: 3.7,
+      nps: 63,
+      customerSatisfaction: "Moderate",
+      positiveSentiment: 70,
+      customerServiceRating: 3.5,
+      feedbackHighlight:
+        "The compact store size is appreciated by customers looking for a quick shopping experience. Good customer service is often mentioned.",
+      improvementAreas:
+        "More spacious stores and better organization of product displays are suggested. Some customers also highlight a need for better promotional offers.",
+    },
+    {
+      name: "Bajaj Electronics",
+      totalReviews: 1000,
+      averageReviewScore: 4.0,
+      nps: 70,
+      customerSatisfaction: "High",
+      positiveSentiment: 82,
+      customerServiceRating: 4.0,
+      feedbackHighlight:
+        "Bajaj Electronics receives positive feedback for its seamless online experience, especially for tech-savvy customers. Pricing transparency is also praised.",
+      improvementAreas:
+        "Improved customer service in physical stores is often suggested, especially during peak hours. There are also recommendations for adding more in-store product demonstrations.",
+    },
+  ];
+
   const newestComments = [
     {
       id: 1,
@@ -233,6 +307,7 @@ function CustomerFeedback() {
       mb="40px"
       gap="40px"
     >
+      <CustomerFeedbackAnalysis feedbackData={feedbackData} />
       <Card>
         <Text color="#fff" fontSize="lg" fontWeight="bold">
           Detailed Overview
@@ -240,9 +315,19 @@ function CustomerFeedback() {
         <CompanyDropDown />
       </Card>
       <Grid
-        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "1fr 2fr" }}
+        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
         gap="24px"
       >
+        <Card>
+          <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
+            Customer Feedback Sentiment Distribution
+          </Text>
+          <MapStateHeatMap
+            data={data}
+            titleText=""
+            legendTitleText="Sentiments analysis"
+          />
+        </Card>
         <div>
           <Card gridArea={{ md: "2 / 1 / 3 / 2", "2xl": "auto" }}>
             <CardHeader mb="24px">
@@ -376,19 +461,100 @@ function CustomerFeedback() {
             </CardBody>
           </Card>
         </div>
-        <Card>
-          <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
-            Customer Feedback Sentiment Distribution
-          </Text>
-          <MapStateHeatMap
-            data={data}
-            titleText=""
-            legendTitleText="Sentiments analysis"
-          />
-        </Card>
       </Grid>
     </Flex>
   );
 }
 
 export default CustomerFeedback;
+
+const CustomerFeedbackAnalysis = ({ feedbackData }) => {
+  return (
+    <Box
+      p="20px"
+      bg="gray.700"
+      borderRadius="15px"
+      mb="24px"
+      color="white"
+      boxShadow="xl"
+      overflowX="auto" // Enables horizontal scrolling
+    >
+      <Text fontSize="2xl" fontWeight="bold" mb="20px">
+        Customer Feedback Analysis
+      </Text>
+
+      <Table variant="simple" colorScheme="teal">
+        <Thead>
+          <Tr>
+            <Th color="gray.400" borderBottomColor="gray.600">
+              Metric
+            </Th>
+            {feedbackData.map((company, index) => (
+              <Th key={index} color="gray.400" borderBottomColor="gray.600">
+                {company.name}
+              </Th>
+            ))}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {/* Total Reviews */}
+          <Tr>
+            <Td>Total Reviews</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.totalReviews}</Td>
+            ))}
+          </Tr>
+          {/* Average Review Score */}
+          <Tr>
+            <Td>Average Review Score</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.averageReviewScore} / 5</Td>
+            ))}
+          </Tr>
+          {/* Net Promoter Score (NPS) */}
+          <Tr>
+            <Td>Net Promoter Score (NPS)</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.nps}</Td>
+            ))}
+          </Tr>
+          {/* Customer Satisfaction */}
+          <Tr>
+            <Td>Customer Satisfaction</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.customerSatisfaction}</Td>
+            ))}
+          </Tr>
+          {/* Positive Sentiment */}
+          <Tr>
+            <Td>Positive Sentiment (%)</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.positiveSentiment}%</Td>
+            ))}
+          </Tr>
+          {/* Customer Service Rating */}
+          <Tr>
+            <Td>Customer Service Rating</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.customerServiceRating} / 5</Td>
+            ))}
+          </Tr>
+          {/* Feedback Highlights */}
+          <Tr>
+            <Td>Feedback Highlights</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.feedbackHighlight}</Td>
+            ))}
+          </Tr>
+          {/* Improvement Areas */}
+          <Tr>
+            <Td>Improvement Areas</Td>
+            {feedbackData.map((company, index) => (
+              <Td key={index}>{company.improvementAreas}</Td>
+            ))}
+          </Tr>
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};
