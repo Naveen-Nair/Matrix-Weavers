@@ -49,14 +49,146 @@ import {
 	lineChartOptionsDashboard
 } from 'variables/charts';
 import { dashboardTableData, timelineData } from 'variables/general';
-import Map from "../Map/index.js"
+import MapStateDistrict from "../../components/MapStateDistrict/index.js"
+import MapStateHeatMap from "../../components/MapStateHeatMap/index.js"
+import CompanyDropDown from "../../components/CompanyDropdown/index.js"
 
+const data = {
+	"Andaman & Nicobar Island": {
+	  value: 150
+	},
+	"Andhra Pradesh": {
+	  value: 470
+	},
+	"Arunanchal Pradesh": {
+	  value: 248
+	},
+	Assam: {
+	  value: 528
+	},
+	Bihar: {
+	  value: 755
+	},
+	Chandigarh: {
+	  value: 95
+	},
+	Chhattisgarh: {
+	  value: 1700
+	},
+	Delhi: {
+	  value: 1823
+	},
+	Goa: {
+	  value: 508
+	},
+	Gujarat: {
+	  value: 624
+	},
+	Haryana: {
+	  value: 1244
+	},
+	"Himachal Pradesh": {
+	  value: 640
+	},
+	"Jammu & Kashmir": {
+	  value: 566
+	},
+	Jharkhand: {
+	  value: 814
+	},
+	Karnataka: {
+	  value: 2482
+	},
+	Kerala: {
+	  value: 899
+	},
+	Lakshadweep: {
+	  value: 15
+	},
+	"Madhya Pradesh": {
+	  value: 1176
+	},
+	Maharashtra: {
+	  value: 727
+	},
+	Manipur: {
+	  value: 314
+	},
+	Meghalaya: {
+	  value: 273
+	},
+	Mizoram: {
+	  value: 306
+	},
+	Nagaland: {
+	  value: 374
+	},
+	Odisha: {
+	  value: 395
+	},
+	Puducherry: {
+	  value: 245
+	},
+	Punjab: {
+	  value: 786
+	},
+	Rajasthan: {
+	  value: 1819
+	},
+	Sikkim: {
+	  value: 152
+	},
+	"Tamil Nadu": {
+	  value: 2296
+	},
+	Telangana: {
+	  value: 467
+	},
+	Tripura: {
+	  value: 194
+	},
+	"Uttar Pradesh": {
+	  value: 2944
+	},
+	Uttarakhand: {
+	  value: 1439
+	},
+	"West Bengal": {
+	  value: 1321
+	}
+  }
 export default function Dashboard() {
 	return (
-		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
+		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }} gap="20px">
 				<Card>
-					<Map />
+				<CompanyDropDown />
+
+				</Card>
+			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
+	
+				<Card>
+					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
+						Store Distribution
+					</Text>
+					<MapStateHeatMap data={data} titleText="" legendTitleText="Number of stores deployed" />
+				</Card>
+			</Grid>
+			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
+	
+				<Card>
+					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
+						Customer Feedback Sentiment Distribution
+					</Text>
+					<MapStateHeatMap data={data} titleText="" legendTitleText="Sentiments analysis" />
+				</Card>
+			</Grid>
+			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', lg: '2fr 1fr' }} gap='24px'>
+
+				<Card>
+					<Text color='#fff' fontSize='lg' fontWeight='bold' mb='4px'>
+						State Map Data
+					</Text>
+					<MapStateDistrict />
 				</Card>
 			</Grid>
 		</Flex>
