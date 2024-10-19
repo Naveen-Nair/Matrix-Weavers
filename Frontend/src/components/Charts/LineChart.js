@@ -1,5 +1,3 @@
- 
-
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
@@ -25,19 +23,17 @@ class LineChart extends React.Component {
   render() {
     return (
       <>
-        {
-          this.state.chartData.length>0? 
-              <ReactApexChart
-                options={this.state.chartOptions}
-                series={this.state.chartData}
-                type='area'
-                width='100%'
-                height='100%'
-              />
-            :
-            <>
-            </>
-        }
+        {this.state.chartData.length > 0 ? (
+          <ReactApexChart
+            options={this.state.chartOptions}
+            series={this.state.chartData}
+            type="area"
+            width="100%"
+            height="100%"
+          />
+        ) : (
+          <></>
+        )}
       </>
     );
   }

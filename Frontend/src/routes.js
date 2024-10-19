@@ -1,5 +1,3 @@
- 
-
 // import
 import BusinessModel from "views/Dashboard/BusinessModel.js";
 import PerformanceTrends from "views/Dashboard/PerformanceTrends.js";
@@ -25,43 +23,36 @@ var dashRoutes = [
   {
     path: "/BusinessModel",
     name: "Business Model",
-    icon: <HomeIcon color='inherit' />,
+    icon: <HomeIcon color="inherit" />,
     component: BusinessModel,
     layout: "/admin",
   },
   {
     path: "/GeographicalCoverage",
     name: "Geographical Presence",
-    icon: <CreditIcon color='inherit' />,
+    icon: <CreditIcon color="inherit" />,
     component: GeogrpahicalCoverage,
     layout: "/admin",
   },
   {
     path: "/PerformanceTrends",
     name: "Performance Trends",
-    icon: <StatsIcon color='inherit' />,
+    icon: <StatsIcon color="inherit" />,
     component: PerformanceTrends,
     layout: "/admin",
   },
   {
     path: "/CustomerFeedback",
     name: "Customer Feedback",
-    icon: <CreditIcon color='inherit' />,
+    icon: <CreditIcon color="inherit" />,
     component: CustomerFeedback,
     layout: "/admin",
   },
   {
     path: "/StrategicInitiatives",
     name: "Strategic Initiatives",
-    icon: <CreditIcon color='inherit' />,
+    icon: <CreditIcon color="inherit" />,
     component: StrategicInitiatives,
-    layout: "/admin",
-  },
-  {
-    path: "/FutureOutlook",
-    name: "Future Outlook",
-    icon: <CreditIcon color='inherit' />,
-    component: FutureOutlook,
     layout: "/admin",
   },
 

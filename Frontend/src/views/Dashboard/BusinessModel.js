@@ -25,10 +25,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import ChannelBreakdown from "../BuisnessModelGraphs/ChannelBreakdown.js";
-import ProductPortfolio from "../BuisnessModelGraphs/ProductPortfolio.js";
-import CustomerBreakDown from "../BuisnessModelGraphs/CustomerBreakdown.js";
-import MarketingMediaPresence from "views/BuisnessModelGraphs/MarketingBreakdown.js";
+import ChannelBreakdown from "../graphs/ChannelBreakdown.js";
+import ProductPortfolio from "../graphs/ProductPortfolio.js";
+import CustomerBreakDown from "../graphs/CustomerBreakdown.js";
+import MarketingMediaPresence from "../graphs/MarketingBreakdown.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
 import Card from "components/Card/Card.js";

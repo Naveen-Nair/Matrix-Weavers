@@ -402,14 +402,7 @@ export default function Dashboard() {
         </Text>
         <CompanyDropDown />
       </Card>
-      <Grid
-        templateColumns={{ sm: "1fr 1fr", md: "1fr 1fr", lg: "1fr 1fr" }}
-        gap="24px"
-      >
-        <SuggestionsCard />
 
-        <InsightsSummary />
-      </Grid>
       <Grid
         templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
         gap="24px"
@@ -424,18 +417,11 @@ export default function Dashboard() {
             legendTitleText="Number of stores deployed"
           />
         </Card>
-      </Grid>
+        <div>
+          <SuggestionsCard />
 
-      <Grid
-        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
-        gap="24px"
-      >
-        <Card>
-          <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
-            State Map Data
-          </Text>
-          <MapStateDistrict />
-        </Card>
+          <InsightsSummary />
+        </div>
       </Grid>
     </Flex>
   );
@@ -446,10 +432,13 @@ function InsightsSummary({}) {
 	Croma currently operates in 5 states with a total of 10 stores. 
 	The company holds a market share of 12%, with its strongest presence in regions such as 15. 
 	Over the past year, it has experienced a growth rate of 5%.
+  	Croma currently operates in 5 states with a total of 10 stores. 
+	The company holds a market share of 12%, with its strongest presence in regions such as 15. 
+	Over the past year, it has experienced a growth rate of 5%.
   `;
 
   return (
-    <Card>
+    <Card mt="24px">
       <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
         Insights Summary
       </Text>
@@ -463,6 +452,10 @@ function InsightsSummary({}) {
 function SuggestionsCard({}) {
   const suggestions = `
 		Croma should consider increasing its store presence in underperforming regions like . 
+		There's also a growth opportunity in , where competitors like  
+		hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories, 
+		Croma could challenge the largest competitors such as .
+    		Croma should consider increasing its store presence in underperforming regions like . 
 		There's also a growth opportunity in , where competitors like  
 		hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories, 
 		Croma could challenge the largest competitors such as .

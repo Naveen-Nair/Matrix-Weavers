@@ -23,11 +23,10 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 const ChatbotModal = ({ isOpen, onClose }) => {
-
   const [question, setQuestion] = useState("");
 
-  function onSubmission(){
-    console.log(question)
+  function onSubmission() {
+    console.log(question);
   }
 
   const [messages, setMessages] = useState([
@@ -35,21 +34,74 @@ const ChatbotModal = ({ isOpen, onClose }) => {
       message: "Hello! This is your Chatbot. You can ask me anything!!",
       sentTime: "just now",
       sender: "Joe",
-      direction: "incoming"
-    }
+      direction: "incoming",
+    },
   ]);
+  function convertMarkdownToText(markdown) {
+    // Convert Markdown to plain text
+    const plainText = markdown
+      // Remove Markdown headers (e.g., ###)
+      .replace(/#+\s+/g, "")
+      // Replace double line breaks with a unique marker
+      .replace(/\n\n+/g, "<<BR>>")
+      // Replace single line breaks with a space
+      .replace(/\n/g, " ")
+      // Restore line breaks
+      .replace(/<<BR>>/g, "\n\n")
+      // Trim any leading or trailing whitespace
+      .trim();
+
+    return plainText;
+  }
 
   // Function to handle sending a message
-  const handleSendMessage = (messageText) => {
+  const handleSendMessage = async (messageText) => {
+    // Prepare the request payload
+    const requestBody = {
+      question: messageText,
+    };
     const newMessage = {
       message: messageText,
       sentTime: "just now",
       sender: "You",
-      direction: "outgoing"
+      direction: "outgoing",
     };
-
-    // Update the state with the new message
     setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+    try {
+      const response = await fetch(
+        "https://5529-2401-4900-628d-3a07-3c6a-354-4c5-75bf.ngrok-free.app/askGRAG",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Response:", data);
+      // Handle the response data as needed
+      const text = convertMarkdownToText(data.response);
+
+      const newMessage = {
+        message: text,
+        sentTime: "just now",
+        sender: "You",
+        direction: "outgoing",
+      };
+
+      // Update the state with the new message
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error as needed
+    }
   };
 
   return (
@@ -74,7 +126,7 @@ const ChatbotModal = ({ isOpen, onClose }) => {
             </Box>
           </VStack> */}
           <div style={{ position: "relative", height: "500px" }}>
-  {/* <MainContainer>
+            {/* <MainContainer>
     <ChatContainer>
       <MessageList>
         <Message
@@ -90,36 +142,32 @@ const ChatbotModal = ({ isOpen, onClose }) => {
     </ChatContainer>
   </MainContainer> */}
 
-<MainContainer>
-      <ChatContainer>
-        {/* Message List */}
-        <MessageList>
-          {messages.map((msg, index) => (
-            <Message
-            style={styles.Message}
-              key={index}
-              model={{
-                message: msg.message,
-                sentTime: msg.sentTime,
-                sender: msg.sender,
-                direction: msg.direction
-              }}
+            <MainContainer>
+              <ChatContainer>
+                {/* Message List */}
+                <MessageList>
+                  {messages.map((msg, index) => (
+                    <Message
+                      style={styles.Message}
+                      key={index}
+                      model={{
+                        message: msg.message,
+                        sentTime: msg.sentTime,
+                        sender: msg.sender,
+                        direction: msg.direction,
+                      }}
+                    />
+                  ))}
+                </MessageList>
 
-            />
-          ))}
-        </MessageList>
-
-        {/* Message Input */}
-        <MessageInput 
-          placeholder="Type message here" 
-          onSend={handleSendMessage}  // Handle sending messages
-        />
-      </ChatContainer>
-    </MainContainer>
-
-
-
-</div>
+                {/* Message Input */}
+                <MessageInput
+                  placeholder="Type message here"
+                  onSend={handleSendMessage} // Handle sending messages
+                />
+              </ChatContainer>
+            </MainContainer>
+          </div>
         </ModalBody>
       </ModalContent>
     </Modal>
