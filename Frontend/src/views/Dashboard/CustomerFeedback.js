@@ -16,6 +16,8 @@ import {
   Td,
   Thead,
   Tbody,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 
 // Images
@@ -298,6 +300,21 @@ function CustomerFeedback() {
     },
   };
   const overallSatisfactonRate = 80;
+  const selectedCompany = {
+    name: "Reliance Digital",
+    feedbackHighlights: [
+      "Customers appreciate the vast range of products.",
+      "Competitive pricing is a key strength.",
+      "Staff is knowledgeable and helpful.",
+      "In-store assistance is highly rated.",
+    ],
+    improvementAreas: [
+      "After-sales service, particularly for high-value items, needs improvement.",
+      "Faster delivery for online orders is recommended.",
+      "Improving product availability in specific regions would be beneficial.",
+    ],
+  };
+
   const dateRange = "17 - 20/10/2024";
   return (
     <Flex
@@ -462,6 +479,9 @@ function CustomerFeedback() {
           </Card>
         </div>
       </Grid>
+      <Card>
+        <FeedbackActionPoints selectedCompany={selectedCompany} />
+      </Card>
     </Flex>
   );
 }
@@ -470,9 +490,9 @@ export default CustomerFeedback;
 
 const CustomerFeedbackAnalysis = ({ feedbackData }) => {
   return (
-    <Box
+    <Card
       p="20px"
-      bg="gray.700"
+      // bg="gray.700"
       borderRadius="15px"
       mb="24px"
       color="white"
@@ -555,6 +575,36 @@ const CustomerFeedbackAnalysis = ({ feedbackData }) => {
           </Tr>
         </Tbody>
       </Table>
+    </Card>
+  );
+};
+
+const FeedbackActionPoints = ({ selectedCompany }) => {
+  return (
+    <Box p="20px" borderRadius="15px" mb="24px" color="white" boxShadow="xl">
+      <Text fontSize="2xl" fontWeight="bold" mb="20px">
+        Action Points from Customer Feedback
+      </Text>
+
+      {/* Feedback Highlights */}
+      <Text fontSize="lg" fontWeight="bold" mb="10px" color="green.300">
+        Feedback Highlights:
+      </Text>
+      <UnorderedList spacing={3}>
+        {selectedCompany.feedbackHighlights.map((highlight, index) => (
+          <ListItem key={index}>{highlight}</ListItem>
+        ))}
+      </UnorderedList>
+
+      {/* Improvement Areas */}
+      <Text fontSize="lg" fontWeight="bold" mt="20px" mb="10px" color="red.300">
+        Areas for Improvement:
+      </Text>
+      <UnorderedList spacing={3}>
+        {selectedCompany.improvementAreas.map((area, index) => (
+          <ListItem key={index}>{area}</ListItem>
+        ))}
+      </UnorderedList>
     </Box>
   );
 };
