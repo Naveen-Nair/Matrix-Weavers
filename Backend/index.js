@@ -10,7 +10,7 @@ const path = require('path');
 //     useUnifiedTopology: true,
 //     family: 4 // Use IPv4, skip trying IPv6
 // })
-mongoose.connect("mongodb+srv://user_1_spider:user_1_spider@cluster0.gpmuqfi.mongodb.net/Chroma_app", {
+mongoose.connect("mongodb+srv://user_1_spider:user_1_spider@cluster0.gpmuqfi.mongodb.net/Chroma_app2", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family: 4 // Use IPv4, skip trying IPv6
