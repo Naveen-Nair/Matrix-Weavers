@@ -31,7 +31,6 @@ export default function Footer(props) {
           {"Made with ❤️ by "}
         </Text>
         "Matrix Weavers "
-        &
 
       </Text>
 

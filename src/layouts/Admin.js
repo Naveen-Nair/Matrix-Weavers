@@ -138,7 +138,7 @@ export default function Dashboard(props) {
             onOpen={onOpen}
           />
         </Portal>
-       
+
       </MainPanel>
     </ChakraProvider>
   );

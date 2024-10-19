@@ -4,6 +4,7 @@
 import Dashboard from "views/Dashboard/Dashboard.js";
 import Tables from "views/Dashboard/Tables.js";
 import Billing from "views/Dashboard/Billing.js";
+import GeogrpahicalCoverage from "views/Dashboard/Geography.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import SignUp from "views/Pages/SignUp.js";
@@ -38,6 +39,13 @@ var dashRoutes = [
     name: "Billing",
     icon: <CreditIcon color='inherit' />,
     component: Billing,
+    layout: "/admin",
+  },
+  {
+    path: "/GeographicalCoverage",
+    name: "Geographical Coverage",
+    icon: <CreditIcon color='inherit' />,
+    component: GeogrpahicalCoverage,
     layout: "/admin",
   },
   {
