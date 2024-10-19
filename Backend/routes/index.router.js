@@ -4,13 +4,12 @@ const router = require('express').Router({ mergeParams: true });
 // const middleware = require('../middlewares/middleware');
 
 //Importing routers
-const eventsRouter = require('./events.router');
 const stockRouter = require('./stock_data.router');
-
+const companiesOverviewRouter = require('./companiesOverview.router');
 
 //Setting up routers
-router.use('/events', eventsRouter);
 router.use('/stockTrend', stockRouter);
+router.use('/companiesOverview', companiesOverviewRouter);
 
 
 module.exports = router;
