@@ -21,9 +21,11 @@ import {
   Th,
   Thead,
   Tr,
+  Td,
 } from "@chakra-ui/react";
 // Styles for the circular progressbar
 import medusa from "assets/img/cardimgfree.png";
+import {useState} from "react"
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -42,7 +44,7 @@ import {
 } from "components/Icons/Icons.js";
 import DashboardTableRow from "components/Tables/DashboardTableRow";
 import TimelineRow from "components/Tables/TimelineRow";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { BiHappy } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
@@ -58,560 +60,242 @@ import {
   lineChartOptionsDashboard,
 } from "variables/charts";
 import { dashboardTableData, timelineData } from "variables/general";
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import CompanyDropDown from "../../components/CompanyDropdown/index.js";
+import 'react-vertical-timeline-component/style.min.css';
+
 
 export default function StrategicInitiatives() {
+
+  const timeline_data = [{"key":1, "title":"Title 1", "subtitle": "Subtitle 1", "description": "Description of the milestone", "indetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":2, "title":"Title 2", "subtitle": "Subtitle 2", "description": "Description of the milestone", "indetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":3, "title":"Title 3", "subtitle": "Subtitle 3", "description": "Description of the milestone", "indetail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {"key":4, "title":"Title 4", "subtitle": "Subtitle 4", "description": "Description of the milestone", "indetail":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}]
+  const [initiative, setInitiative] = useState(0)
+
+  const strategic_table = [
+    {
+      "Retailer": "Croma",
+      "Investment Area": "Supply Chain",
+      "Year": 2023,
+      "Amount Invested": "$100M",
+      "Expected Impact": "10% cost savings"
+    },
+    {
+      "Retailer": "Reliance Digital",
+      "Investment Area": "Technology Upgrades",
+      "Year": 2022,
+      "Amount Invested": "$200M",
+      "Expected Impact": "Faster deliveries"
+    },
+    {
+      "Retailer": "Vijay Sales",
+      "Investment Area": "Marketing",
+      "Year": 2023,
+      "Amount Invested": "$50M",
+      "Expected Impact": "Increased reach"
+    },
+    {
+      "Retailer": "Bajaj Electronics",
+      "Investment Area": "Customer Service",
+      "Year": 2022,
+      "Amount Invested": "$30M",
+      "Expected Impact": "Improved customer satisfaction"
+    },
+    {
+      "Retailer": "Poojara",
+      "Investment Area": "Store Expansion",
+      "Year": 2021,
+      "Amount Invested": "$40M",
+      "Expected Impact": "25 new stores opened"
+    },
+    {
+      "Retailer": "Aditya Vision",
+      "Investment Area": "Private Labels",
+      "Year": 2023,
+      "Amount Invested": "$70M",
+      "Expected Impact": "Increased profit margins by 12%"
+    },
+    {
+      "Retailer": "Reliance Digital",
+      "Investment Area": "E-commerce Platform",
+      "Year": 2023,
+      "Amount Invested": "$150M",
+      "Expected Impact": "Enhanced online customer experience"
+    },
+    {
+      "Retailer": "Croma",
+      "Investment Area": "Sustainability Initiatives",
+      "Year": 2022,
+      "Amount Invested": "$60M",
+      "Expected Impact": "Reduced carbon footprint by 15%"
+    },
+    {
+      "Retailer": "Vijay Sales",
+      "Investment Area": "AI-based Customer Insights",
+      "Year": 2021,
+      "Amount Invested": "$90M",
+      "Expected Impact": "Optimized marketing campaigns"
+    }
+  ]
+  
+
+  function initiativeClick(key){
+    setInitiative(key);
+  }
+
+  useEffect(()=>{
+
+  }, [initiative])
+
+
+
+
+
+
+
+
+
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
       <Grid
-        templateColumns={{ sm: "1fr", md: "1fr 1fr", "2xl": "2fr 1.2fr 1.5fr" }}
-        my="26px"
+        templateColumns={{ sm: "1fr", md: "2fr 1fr", "2xl": "2fr 1fr" }} // 2:1 width ratio
+        templateRows={{ sm: "auto", md: "auto auto" }} // Two rows for the long box and the stacked boxes
         gap="18px"
       >
         {/* Welcome Card */}
+        <Card gridColumn="1 / -1" gridRow="1">
+          <CompanyDropDown/>
+        </Card>
+        
+        {/* Satisfaction Rate */}
         <Card
           p="0px"
-          gridArea={{ md: "1 / 1 / 2 / 3", "2xl": "auto" }}
-          bgImage={medusa}
+          // gridArea={{ md: "1 / 1 / 2 / 3", "2xl": "auto" }}
+          // bgImage={medusa}
+          gridColumn={{ md: "1 / 2" }} gridRow="3 / 4"
           bgSize="cover"
           bgPosition="50%"
+          padding="20px"
         >
-          <CardBody w="100%" h="100%">
-            <Flex flexDirection={{ sm: "column", lg: "row" }} w="100%" h="100%">
-              <Flex
-                flexDirection="column"
-                h="100%"
-                p="22px"
-                minW="60%"
-                lineHeight="1.6"
-              >
-                <Text fontSize="sm" color="gray.400" fontWeight="bold">
-                  Welcome back,
-                </Text>
-                <Text fontSize="28px" color="#fff" fontWeight="bold" mb="18px">
-                  Mark Johnson
-                </Text>
-                <Text
-                  fontSize="md"
-                  color="gray.400"
-                  fontWeight="normal"
-                  mb="auto"
-                >
-                  Glad to see you again! <br />
-                  Ask me anything.
-                </Text>
-                <Spacer />
-                <Flex align="center">
-                  <Button
-                    p="0px"
-                    variant="no-hover"
-                    bg="transparent"
-                    my={{ sm: "1.5rem", lg: "0px" }}
-                  >
-                    <Text
-                      fontSize="sm"
-                      color="#fff"
-                      fontWeight="bold"
-                      cursor="pointer"
-                      transition="all .3s ease"
-                      my={{ sm: "1.5rem", lg: "0px" }}
-                      _hover={{ me: "4px" }}
-                    >
-                      Tab to record
-                    </Text>
-                    <Icon
-                      as={BsArrowRight}
-                      w="20px"
-                      h="20px"
-                      color="#fff"
-                      fontSize="2xl"
-                      transition="all .3s ease"
-                      mx=".3rem"
-                      cursor="pointer"
-                      pt="4px"
-                      _hover={{ transform: "translateX(20%)" }}
-                    />
-                  </Button>
-                </Flex>
-              </Flex>
-            </Flex>
+          <CardBody w="100%" h="100%" display="flex" flexDirection="column">
+          <Text color="#fff" fontSize="1.9em" fontWeight="bold" mb="20px">
+            {timeline_data[initiative]["title"]}
+          </Text>
+          <Text color="gray.400" fontSize="1.2em">
+            {timeline_data[initiative]["indetail"]}
+          </Text>
           </CardBody>
         </Card>
-        {/* Satisfaction Rate */}
-        <Card gridArea={{ md: "2 / 1 / 3 / 2", "2xl": "auto" }}>
-          <CardHeader mb="24px">
-            <Flex direction="column">
-              <Text color="#fff" fontSize="lg" fontWeight="bold" mb="4px">
-                Satisfaction Rate
-              </Text>
-              <Text color="gray.400" fontSize="sm">
-                From all projects
-              </Text>
-            </Flex>
-          </CardHeader>
-          <Flex direction="column" justify="center" align="center">
-            <Box zIndex="-1">
-              <CircularProgress
-                size={200}
-                value={80}
-                thickness={6}
-                color="#582CFF"
-                variant="vision"
-                rounded
-              >
-                <CircularProgressLabel>
-                  <IconBox
-                    mb="20px"
-                    mx="auto"
-                    bg="brand.200"
-                    borderRadius="50%"
-                    w="48px"
-                    h="48px"
-                  >
-                    <Icon as={BiHappy} color="#fff" w="30px" h="30px" />
-                  </IconBox>
-                </CircularProgressLabel>
-              </CircularProgress>
-            </Box>
-            <Stack
-              direction="row"
-              spacing={{ sm: "42px", md: "68px" }}
-              justify="center"
-              maxW={{ sm: "270px", md: "300px", lg: "100%" }}
-              mx={{ sm: "auto", md: "0px" }}
-              p="18px 22px"
-              bg="linear-gradient(126.97deg, rgb(6, 11, 40) 28.26%, rgba(10, 14, 35) 91.2%)"
-              borderRadius="20px"
-              position="absolute"
-              bottom="5%"
-            >
-              <Text fontSize="xs" color="gray.400">
-                0%
-              </Text>
-              <Flex direction="column" align="center" minW="80px">
-                <Text color="#fff" fontSize="28px" fontWeight="bold">
-                  95%
-                </Text>
-                <Text fontSize="xs" color="gray.400">
-                  Based on likes
-                </Text>
-              </Flex>
-              <Text fontSize="xs" color="gray.400">
-                100%
-              </Text>
-            </Stack>
-          </Flex>
-        </Card>
-        {/* Referral Tracking */}
-        <Card gridArea={{ md: "2 / 2 / 3 / 3", "2xl": "auto" }}>
-          <Flex direction="column">
-            <Flex justify="space-between" align="center" mb="40px">
-              <Text color="#fff" fontSize="lg" fontWeight="bold">
-                Referral Tracking
-              </Text>
-              <Button
-                borderRadius="12px"
-                w="38px"
-                h="38px"
-                bg="#22234B"
-                _hover="none"
-                _active="none"
-              >
-                <Icon as={IoEllipsisHorizontal} color="#7551FF" />
-              </Button>
-            </Flex>
-            <Flex direction={{ sm: "column", md: "row" }}>
-              <Flex
-                direction="column"
-                me={{ md: "6px", lg: "52px" }}
-                mb={{ sm: "16px", md: "0px" }}
-              >
-                <Flex
-                  direction="column"
-                  p="22px"
-                  pe={{ sm: "22e", md: "8px", lg: "22px" }}
-                  minW={{ sm: "220px", md: "140px", lg: "220px" }}
-                  bg="linear-gradient(126.97deg, #060C29 28.26%, rgba(4, 12, 48, 0.5) 91.2%)"
-                  borderRadius="20px"
-                  mb="20px"
-                >
-                  <Text color="gray.400" fontSize="sm" mb="4px">
-                    Invited
-                  </Text>
-                  <Text color="#fff" fontSize="lg" fontWeight="bold">
-                    145 people
-                  </Text>
-                </Flex>
-                <Flex
-                  direction="column"
-                  p="22px"
-                  pe={{ sm: "22px", md: "8px", lg: "22px" }}
-                  minW={{ sm: "170px", md: "140px", lg: "170px" }}
-                  bg="linear-gradient(126.97deg, #060C29 28.26%, rgba(4, 12, 48, 0.5) 91.2%)"
-                  borderRadius="20px"
-                >
-                  <Text color="gray.400" fontSize="sm" mb="4px">
-                    Bonus
-                  </Text>
-                  <Text color="#fff" fontSize="lg" fontWeight="bold">
-                    1,465
-                  </Text>
-                </Flex>
-              </Flex>
-              <Box mx={{ sm: "auto", md: "0px" }}>
-                <CircularProgress
-                  size={
-                    window.innerWidth >= 1024
-                      ? 200
-                      : window.innerWidth >= 768
-                      ? 170
-                      : 200
-                  }
-                  value={70}
-                  thickness={6}
-                  color="#05CD99"
-                  variant="vision"
-                >
-                  <CircularProgressLabel>
-                    <Flex direction="column" justify="center" align="center">
-                      <Text color="gray.400" fontSize="sm">
-                        Safety
-                      </Text>
-                      <Text
-                        color="#fff"
-                        fontSize={{ md: "36px", lg: "50px" }}
-                        fontWeight="bold"
-                        mb="4px"
-                      >
-                        9.3
-                      </Text>
-                      <Text color="gray.400" fontSize="sm">
-                        Total Score
-                      </Text>
-                    </Flex>
-                  </CircularProgressLabel>
-                </CircularProgress>
-              </Box>
-            </Flex>
-          </Flex>
-        </Card>
-      </Grid>
-      <Grid
-        templateColumns={{ sm: "1fr", lg: "1.7fr 1.3fr" }}
-        maxW={{ sm: "100%", md: "100%" }}
-        gap="24px"
-        mb="24px"
-      >
-        {/* Sales Overview */}
-        <Card p="28px 0px 0px 0px">
-          <CardHeader mb="20px" ps="22px">
-            <Flex direction="column" alignSelf="flex-start">
-              <Text fontSize="lg" color="#fff" fontWeight="bold" mb="6px">
-                Sales Overview
-              </Text>
-              <Text fontSize="md" fontWeight="medium" color="gray.400">
-                <Text as="span" color="green.400" fontWeight="bold">
-                  (+5%) more
-                </Text>{" "}
-                in 2021
-              </Text>
-            </Flex>
-          </CardHeader>
-          <Box w="100%" minH={{ sm: "300px" }}>
-            {console.log(lineChartOptionsDashboard)}
-            <LineChart
-              lineChartData={lineChartDataDashboard}
-              lineChartOptions={lineChartOptionsDashboard}
-            />
-          </Box>
-        </Card>
-        {/* Active Users */}
-        <Card p="16px">
-          <CardBody>
-            <Flex direction="column" w="100%">
-              <Box
-                bg="linear-gradient(126.97deg, #060C29 28.26%, rgba(4, 12, 48, 0.5) 91.2%)"
-                borderRadius="20px"
-                display={{ sm: "flex", md: "block" }}
-                justify={{ sm: "center", md: "flex-start" }}
-                align={{ sm: "center", md: "flex-start" }}
-                minH={{ sm: "180px", md: "220px" }}
-                p={{ sm: "0px", md: "22px" }}
-              >
-                <BarChart
-                  barChartOptions={barChartOptionsDashboard}
-                  barChartData={barChartDataDashboard}
-                />
-              </Box>
-              <Flex
-                direction="column"
-                mt="24px"
-                mb="36px"
-                alignSelf="flex-start"
-              >
-                <Text fontSize="lg" color="#fff" fontWeight="bold" mb="6px">
-                  Active Users
-                </Text>
-                <Text fontSize="md" fontWeight="medium" color="gray.400">
-                  <Text as="span" color="green.400" fontWeight="bold">
-                    (+23%)
-                  </Text>{" "}
-                  than last week
-                </Text>
-              </Flex>
-              <SimpleGrid gap={{ sm: "12px" }} columns={4}>
-                <Flex direction="column">
-                  <Flex alignItems="center">
-                    <IconBox
-                      as="box"
-                      h={"30px"}
-                      w={"30px"}
-                      bg="brand.200"
-                      me="6px"
-                    >
-                      <WalletIcon h={"15px"} w={"15px"} color="#fff" />
-                    </IconBox>
-                    <Text fontSize="sm" color="gray.400">
-                      Users
-                    </Text>
-                  </Flex>
-                  <Text
-                    fontSize={{ sm: "md", lg: "lg" }}
-                    color="#fff"
-                    fontWeight="bold"
-                    mb="6px"
-                    my="6px"
-                  >
-                    32,984
-                  </Text>
-                  <Progress
-                    colorScheme="brand"
-                    bg="#2D2E5F"
-                    borderRadius="30px"
-                    h="5px"
-                    value={20}
-                  />
-                </Flex>
-                <Flex direction="column">
-                  <Flex alignItems="center">
-                    <IconBox
-                      as="box"
-                      h={"30px"}
-                      w={"30px"}
-                      bg="brand.200"
-                      me="6px"
-                    >
-                      <RocketIcon h={"15px"} w={"15px"} color="#fff" />
-                    </IconBox>
-                    <Text fontSize="sm" color="gray.400">
-                      Clicks
-                    </Text>
-                  </Flex>
-                  <Text
-                    fontSize={{ sm: "md", lg: "lg" }}
-                    color="#fff"
-                    fontWeight="bold"
-                    mb="6px"
-                    my="6px"
-                  >
-                    2.42m
-                  </Text>
-                  <Progress
-                    colorScheme="brand"
-                    bg="#2D2E5F"
-                    borderRadius="30px"
-                    h="5px"
-                    value={90}
-                  />
-                </Flex>
-                <Flex direction="column">
-                  <Flex alignItems="center">
-                    <IconBox
-                      as="box"
-                      h={"30px"}
-                      w={"30px"}
-                      bg="brand.200"
-                      me="6px"
-                    >
-                      <CartIcon h={"15px"} w={"15px"} color="#fff" />
-                    </IconBox>
-                    <Text fontSize="sm" color="gray.400">
-                      Sales
-                    </Text>
-                  </Flex>
-                  <Text
-                    fontSize={{ sm: "md", lg: "lg" }}
-                    color="#fff"
-                    fontWeight="bold"
-                    mb="6px"
-                    my="6px"
-                  >
-                    2,400$
-                  </Text>
-                  <Progress
-                    colorScheme="brand"
-                    bg="#2D2E5F"
-                    borderRadius="30px"
-                    h="5px"
-                    value={30}
-                  />
-                </Flex>
-                <Flex direction="column">
-                  <Flex alignItems="center">
-                    <IconBox
-                      as="box"
-                      h={"30px"}
-                      w={"30px"}
-                      bg="brand.200"
-                      me="6px"
-                    >
-                      <StatsIcon h={"15px"} w={"15px"} color="#fff" />
-                    </IconBox>
-                    <Text fontSize="sm" color="gray.400">
-                      Items
-                    </Text>
-                  </Flex>
-                  <Text
-                    fontSize={{ sm: "md", lg: "lg" }}
-                    color="#fff"
-                    fontWeight="bold"
-                    mb="6px"
-                    my="6px"
-                  >
-                    320
-                  </Text>
-                  <Progress
-                    colorScheme="brand"
-                    bg="#2D2E5F"
-                    borderRadius="30px"
-                    h="5px"
-                    value={50}
-                  />
-                </Flex>
-              </SimpleGrid>
-            </Flex>
-          </CardBody>
-        </Card>
-      </Grid>
-      <Grid
-        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
-        gap="24px"
-      >
-        {/* Projects */}
-        <Card p="16px" overflowX={{ sm: "scroll", xl: "hidden" }}>
-          <CardHeader p="12px 0px 28px 0px">
-            <Flex direction="column">
-              <Text fontSize="lg" color="#fff" fontWeight="bold" pb="8px">
-                Projects
-              </Text>
-              <Flex align="center">
-                <Icon
-                  as={IoCheckmarkDoneCircleSharp}
-                  color="teal.300"
-                  w={4}
-                  h={4}
-                  pe="3px"
-                />
-                <Text fontSize="sm" color="gray.400" fontWeight="normal">
-                  <Text fontWeight="bold" as="span">
-                    30 done
-                  </Text>{" "}
-                  this month.
-                </Text>
-              </Flex>
-            </Flex>
-          </CardHeader>
-          <Table variant="simple" color="#fff">
+
+        <Card p="10px" gridColumn={{ md: "1 / 2" }} gridRow="2 / 3">
+        <Table variant="simple" color="#fff">
             <Thead>
-              <Tr my=".8rem" ps="0px">
+              <Tr my=".8rem" ps="0px" color="gray.400" >
                 <Th
                   ps="0px"
                   color="gray.400"
                   fontFamily="Plus Jakarta Display"
                   borderBottomColor="#56577A"
                 >
-                  Companies
+                  Investment Area
                 </Th>
                 <Th
                   color="gray.400"
                   fontFamily="Plus Jakarta Display"
                   borderBottomColor="#56577A"
                 >
-                  Members
+                  Year
                 </Th>
                 <Th
                   color="gray.400"
                   fontFamily="Plus Jakarta Display"
                   borderBottomColor="#56577A"
                 >
-                  Budget
+                  Amount Invested
                 </Th>
                 <Th
                   color="gray.400"
                   fontFamily="Plus Jakarta Display"
                   borderBottomColor="#56577A"
                 >
-                  Completion
+                  Expected Impacted
                 </Th>
               </Tr>
             </Thead>
             <Tbody>
-              {dashboardTableData.map((row, index, arr) => {
-                return (
-                  <DashboardTableRow
-                    name={row.name}
-                    logo={row.logo}
-                    members={row.members}
-                    budget={row.budget}
-                    progression={row.progression}
-                    lastItem={index === arr.length - 1 ? true : false}
-                  />
-                );
-              })}
+              {strategic_table.map((company, index) => (
+                <Tr key={index}>
+                  <Td
+                    ps="0px"
+                    color="#fff"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company["Investment Area"]}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company["Year"]}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company["Amount Invested"]}
+                  </Td>
+                  <Td
+                    color="gray.400"
+                    fontFamily="Plus Jakarta Display"
+                    borderBottomColor="#56577A"
+                  >
+                    {company["Expected Impact"]}
+                  </Td>
+                </Tr>
+              ))}
             </Tbody>
           </Table>
+          
         </Card>
-        {/* Orders Overview */}
-        <Card>
-          <CardHeader mb="32px">
-            <Flex direction="column">
-              <Text fontSize="lg" color="#fff" fontWeight="bold" mb="6px">
-                Orders overview
-              </Text>
-              <Flex align="center">
-                <Icon
-                  as={AiFillCheckCircle}
-                  color="green.500"
-                  w="15px"
-                  h="15px"
-                  me="5px"
-                />
-                <Text fontSize="sm" color="gray.400" fontWeight="normal">
-                  <Text fontWeight="bold" as="span" color="gray.400">
-                    +30%
-                  </Text>{" "}
-                  this month
-                </Text>
-              </Flex>
-            </Flex>
-          </CardHeader>
-          <CardBody>
-            <Flex direction="column" lineHeight="21px">
-              {timelineData.map((row, index, arr) => {
-                return (
-                  <TimelineRow
-                    logo={row.logo}
-                    title={row.title}
-                    date={row.date}
-                    color={row.color}
-                    index={index}
-                    arrLength={arr.length}
-                  />
-                );
-              })}
-            </Flex>
-          </CardBody>
+        
+        {/* Referral Tracking */}
+        <Card  gridColumn={{ md: "2 / 3" }} gridRow="2 / 4">
+        
+        <VerticalTimeline>
+          { timeline_data.map((company, index) => (
+            <VerticalTimelineElement
+            key={index}
+            className="vertical-timeline-element--work"
+            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            iconOnClick={()=>{initiativeClick(index)}}
+          >
+            <h3 className="vertical-timeline-element-title">{company["title"]}</h3>
+            <h4 className="vertical-timeline-element-subtitle">{company["subtitle"]}</h4>
+            <p>
+              {company["description"]}
+            </p>
+          
+          </VerticalTimelineElement>
+          ))
+
+          }
+
+{/* More VerticalTimelineElement components */}
+
+</VerticalTimeline>
         </Card>
+
+        
+
+        
+
+
       </Grid>
+      
+        
+        {/* Active Users */}
+        
     </Flex>
   );
 }
