@@ -25,7 +25,7 @@ class BarChart extends Component {
     return (
       <>
         {
-          this.state.chartData.length>0 && console.log(this.state.chartData) ? 
+          this.state.chartData.length>0  ? 
             <Chart
               options={this.state.chartOptions}
               series={this.state.chartData}

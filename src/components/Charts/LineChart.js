@@ -26,7 +26,7 @@ class LineChart extends React.Component {
     return (
       <>
         {
-          this.state.chartData.length>0 && console.log(this.state.chartData) ? 
+          this.state.chartData.length>0? 
               <ReactApexChart
                 options={this.state.chartOptions}
                 series={this.state.chartData}
