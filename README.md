@@ -1,5 +1,3 @@
----
-
 # Competitive Intelligence Solution for Croma
 
 ## Project Overview
@@ -34,6 +32,29 @@ The key competitors include:
 
 ### Expected Outcomes
 The solution is expected to provide summarized competitive intelligence based on various parameters such as business model differentiators, geographical presence, performance trends, customer feedback, strategic initiatives, and future outlook for the key competitors.
+
+---
+
+## Images Video and Description
+
+### Video link: [link](https://drive.google.com/file/d/1t466etBU1ZidwU0Yn30errTmQAouc15h)
+
+### Presentation link: [link](https://drive.google.com/file/d/1Q1G937u1PO3tda-tbiYvE1eei1g7C8q7/view?usp=sharing)
+
+### Images
+![image 1](./Frontend/public/croma1.png)
+![image 2](./Frontend/public/croma2.png)
+![image 3](./Frontend/public/croma3.png)
+![image 4](./Frontend/public/croma4.png)
+![image 5](./Frontend/public/croma5.png)
+![image 6](./Frontend/public/croma6.png)
+![image 7](./Frontend/public/croma7.png)
+![image 8](./Frontend/public/croma8.png)
+![image 9](./Frontend/public/croma9.png)
+![image 10](./Frontend/public/croma10.png)
+![image 11](./Frontend/public/croma11.png)
+![image 12](./Frontend/public/croma12.png)
+![image 13](./Frontend/public/croma13.png)
 
 ---
 
@@ -202,23 +223,3 @@ docker compose up --build
 
 - Place the data directories inside the ML_Backend folder
 
-## Images Video and Description
-
-### Video link: [link](https://drive.google.com/file/d/1t466etBU1ZidwU0Yn30errTmQAouc15h)
-
-### Presentation link: [link](https://drive.google.com/file/d/1Q1G937u1PO3tda-tbiYvE1eei1g7C8q7/view?usp=sharing)
-
-### Images
-![image 1](./Frontend/public/croma1.png)
-![image 2](./Frontend/public/croma2.png)
-![image 3](./Frontend/public/croma3.png)
-![image 4](./Frontend/public/croma4.png)
-![image 5](./Frontend/public/croma5.png)
-![image 6](./Frontend/public/croma6.png)
-![image 7](./Frontend/public/croma7.png)
-![image 8](./Frontend/public/croma8.png)
-![image 9](./Frontend/public/croma9.png)
-![image 10](./Frontend/public/croma10.png)
-![image 11](./Frontend/public/croma11.png)
-![image 12](./Frontend/public/croma12.png)
-![image 13](./Frontend/public/croma13.png)
