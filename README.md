@@ -1,5 +1,3 @@
-To enhance your README file with more details about the Machine Learning (ML) component, I'll include explanations about the data scraping, knowledge graph construction using LightRAG, and how the ML models contribute to generating competitive insights. Here's the extended version of the README:
-
 ---
 
 # Competitive Intelligence Solution for Croma
