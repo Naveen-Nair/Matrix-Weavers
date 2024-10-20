@@ -33,7 +33,12 @@ export default function StrategicInitiatives() {
   function fetchTables(){
     fetchInitiativesTables().then((res)=>{
       console.log(res)
+      const t = res;
+      for(i = 0; i<res.length; i++){
+        t[i]["key"] = i;
+      }
       setTablelist(res)
+      // console.log(t)
     }).catch((err)=>{
       console.log(err)
     })
@@ -81,7 +86,7 @@ export default function StrategicInitiatives() {
         </Card>
 
         {/* Satisfaction Rate */}
-        <Card
+        {/* <Card
           p="0px"
           // gridArea={{ md: "1 / 1 / 2 / 3", "2xl": "auto" }}
           // bgImage={medusa}
@@ -92,15 +97,15 @@ export default function StrategicInitiatives() {
           padding="20px"
         >
           <CardBody w="100%" h="100%" display="flex" flexDirection="column">
-            {timelinelist && timelinelist.size>initiative} ?
+            {timelinelist && timelinelist.length>initiative} ? <>
           <Text color="#fff" fontSize="1.9em" fontWeight="bold" mb="20px">
-            {timelinelist[initiative].title}
+          {console.log(timelinelist.length)}  {timelinelist.length>0} ?{timelinelist[initiative].title}:{}
           </Text>
           <Text color="gray.400" fontSize="1.2em">
-            {timelinelist[initiative].indetail}
-          </Text>:<></> 
+            {timelinelist.length>0} ? {timelinelist[initiative].indetail}:{}
+          </Text></>:<></> 
           </CardBody>
-        </Card>
+        </Card> */}
 
         <Card p="10px" gridColumn={{ md: "1 / 2" }} gridRow="2 / 3">
           <Table variant="simple" color="#fff">
@@ -138,7 +143,7 @@ export default function StrategicInitiatives() {
               </Tr>
             </Thead>
             <Tbody>
-              {tablelist.map((company, index) => (
+              {tablelist.length>0 && tablelist.map((company, index) => (
                 company.company == selcomp ?
                  <Tr key={index}>
                   <Td
@@ -180,7 +185,7 @@ export default function StrategicInitiatives() {
         <Card  gridColumn={{ md: "2 / 3" }} gridRow="2 / 4">
         
         <VerticalTimeline>
-          { timelinelist.map((company, index) => (
+          {timelinelist.length>0 && timelinelist.map((company, index) => (
             company.company == selcomp ?
             <VerticalTimelineElement
             key={index}
