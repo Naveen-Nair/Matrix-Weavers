@@ -12,20 +12,29 @@ import {
   Td,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChannelBreakdown from "../graphs/ChannelBreakdown.js";
 import ProductPortfolio from "../graphs/ProductPortfolio.js";
 import CustomerBreakDown from "../graphs/CustomerBreakdown.js";
 import MarketingMediaPresence from "../graphs/MarketingBreakdown.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
+import BusinessModelApi from "../apis/businessModelSummary.js";
 
 import Card from "components/Card/Card.js";
 
 export default function BusinessModel() {
-  const [selcomp, selectCompany] = useState("reliance")
+  const [selcomp, selectCompany] = useState("reliance");
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    BusinessModelApi().then((data) => {
+      setApiData(data);
+    });
+  }, []);
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
-      <BusinessModelAnalysis data={businessModelData} />
+      {apiData && apiData.data && apiData.data.length > 0 && (
+        <BusinessModelAnalysis data={apiData.data} />
+      )}
       <Grid
         templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "1fr 1fr" }}
         gap="24px"
@@ -44,7 +53,7 @@ export default function BusinessModel() {
         <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
           Detailed Overview
         </Text>
-        <CompanyDropDown setSelectedCompany={selectCompany}/>
+        <CompanyDropDown setSelectedCompany={selectCompany} />
       </Card>
       <BusinessModelSummary />
       <BusinessModelInsights />
@@ -170,89 +179,6 @@ const BusinessModelAnalysis = ({ data }) => {
     </Card>
   );
 };
-
-const businessModelData = [
-  {
-    name: "Reliance Digital",
-    geographicalPresence: { states: 15, stores: 200 },
-    storeOwnership: { rented: 120, owned: 80 },
-    storeFormats: "Retail, Warehouse",
-    onlineSales: "Yes",
-    b2bChannel: "Yes",
-    productPortfolio: "Electronics, Home Appliances",
-    privateLabels: "Yes",
-    customerSegments: "Mass, Premium",
-    affordabilityOfferings: "EMI, Exchange",
-    afterSalesServices: "Warranty, Recycling",
-    supplyChainStrength: "Strong (2-day delivery)",
-    technologyUse: "High (E-commerce, In-store Tech)",
-    marketingStrategy: "Aggressive",
-  },
-  {
-    name: "Vijay Sales",
-    geographicalPresence: { states: 10, stores: 150 },
-    storeOwnership: { rented: 90, owned: 60 },
-    storeFormats: "Retail",
-    onlineSales: "Yes",
-    b2bChannel: "No",
-    productPortfolio: "Electronics",
-    privateLabels: "No",
-    customerSegments: "Mass",
-    affordabilityOfferings: "EMI",
-    afterSalesServices: "Warranty",
-    supplyChainStrength: "Average (5-day delivery)",
-    technologyUse: "Medium",
-    marketingStrategy: "Moderate",
-  },
-  {
-    name: "Aditya Vision",
-    geographicalPresence: { states: 8, stores: 100 },
-    storeOwnership: { rented: 50, owned: 50 },
-    storeFormats: "Retail, Franchise",
-    onlineSales: "No",
-    b2bChannel: "Yes",
-    productPortfolio: "Electronics, Appliances",
-    privateLabels: "Yes",
-    customerSegments: "Mass, Budget",
-    affordabilityOfferings: "EMI, Exchange",
-    afterSalesServices: "Limited",
-    supplyChainStrength: "Strong (3-day delivery)",
-    technologyUse: "Low",
-    marketingStrategy: "Limited",
-  },
-  {
-    name: "Poojara",
-    geographicalPresence: { states: 12, stores: 120 },
-    storeOwnership: { rented: 70, owned: 50 },
-    storeFormats: "Retail, Outlet",
-    onlineSales: "No",
-    b2bChannel: "No",
-    productPortfolio: "Electronics",
-    privateLabels: "No",
-    customerSegments: "Mass",
-    affordabilityOfferings: "Exchange",
-    afterSalesServices: "Limited",
-    supplyChainStrength: "Average (6-day delivery)",
-    technologyUse: "Low",
-    marketingStrategy: "Moderate",
-  },
-  {
-    name: "Bajaj Electronics",
-    geographicalPresence: { states: 14, stores: 180 },
-    storeOwnership: { rented: 100, owned: 80 },
-    storeFormats: "Retail, E-commerce",
-    onlineSales: "Yes",
-    b2bChannel: "Yes",
-    productPortfolio: "Electronics, Appliances",
-    privateLabels: "No",
-    customerSegments: "Mass, Premium",
-    affordabilityOfferings: "EMI, Exchange",
-    afterSalesServices: "Warranty, Repair",
-    supplyChainStrength: "Strong (2-day delivery)",
-    technologyUse: "High",
-    marketingStrategy: "Aggressive",
-  },
-];
 
 const BusinessModelInsights = ({ insights = insightsData }) => {
   return (
