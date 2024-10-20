@@ -16,108 +16,114 @@ import React from "react";
 import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
-const data = {
-  "Andaman & Nicobar Island": {
-    value: 150,
-  },
-  "Andhra Pradesh": {
-    value: 470,
-  },
-  "Arunanchal Pradesh": {
-    value: 248,
-  },
-  Assam: {
-    value: 528,
-  },
-  Bihar: {
-    value: 755,
-  },
-  Chandigarh: {
-    value: 95,
-  },
-  Chhattisgarh: {
-    value: 1700,
-  },
-  Delhi: {
-    value: 1823,
-  },
-  Goa: {
-    value: 508,
-  },
-  Gujarat: {
-    value: 624,
-  },
-  Haryana: {
-    value: 1244,
-  },
-  "Himachal Pradesh": {
-    value: 640,
-  },
-  "Jammu & Kashmir": {
-    value: 566,
-  },
-  Jharkhand: {
-    value: 814,
-  },
-  Karnataka: {
-    value: 2482,
-  },
-  Kerala: {
-    value: 899,
-  },
-  Lakshadweep: {
-    value: 15,
-  },
-  "Madhya Pradesh": {
-    value: 1176,
-  },
-  Maharashtra: {
-    value: 727,
-  },
-  Manipur: {
-    value: 314,
-  },
-  Meghalaya: {
-    value: 273,
-  },
-  Mizoram: {
-    value: 306,
-  },
-  Nagaland: {
-    value: 374,
-  },
-  Odisha: {
-    value: 395,
-  },
-  Puducherry: {
-    value: 245,
-  },
-  Punjab: {
-    value: 786,
-  },
-  Rajasthan: {
-    value: 1819,
-  },
-  Sikkim: {
-    value: 152,
-  },
-  "Tamil Nadu": {
-    value: 2296,
-  },
-  Telangana: {
-    value: 467,
-  },
-  Tripura: {
-    value: 194,
-  },
-  "Uttar Pradesh": {
-    value: 2944,
-  },
-  Uttarakhand: {
-    value: 1439,
-  },
-  "West Bengal": {
-    value: 1321,
+const apiData = {
+  summary:
+    "Croma currently operates in 5 states with a total of 10 stores. The company holds a market share of 12%, with its strongest presence in regions such as 15. Over the past year, it has experienced a growth rate of 5%. Croma currently operates in 5 states with a total of 10 stores.  The company holds a market share of 12%, with its strongest presence in regions such as 15.  Over the past year, it has experienced a growth rate of 5%.",
+  suggestions:
+    "Croma should consider increasing its store presence in underperforming regions like . There's also a growth opportunity in , where competitors like   hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories,  Croma could challenge the largest competitors such as . Croma should consider increasing its store presence in underperforming regions like .  There's also a growth opportunity in , where competitors like   hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories,  Croma could challenge the largest competitors such as .",
+  data: {
+    "Andaman & Nicobar Island": {
+      value: 150,
+    },
+    "Andhra Pradesh": {
+      value: 470,
+    },
+    "Arunanchal Pradesh": {
+      value: 248,
+    },
+    Assam: {
+      value: 528,
+    },
+    Bihar: {
+      value: 755,
+    },
+    Chandigarh: {
+      value: 95,
+    },
+    Chhattisgarh: {
+      value: 1700,
+    },
+    Delhi: {
+      value: 1823,
+    },
+    Goa: {
+      value: 508,
+    },
+    Gujarat: {
+      value: 624,
+    },
+    Haryana: {
+      value: 1244,
+    },
+    "Himachal Pradesh": {
+      value: 640,
+    },
+    "Jammu & Kashmir": {
+      value: 566,
+    },
+    Jharkhand: {
+      value: 814,
+    },
+    Karnataka: {
+      value: 2482,
+    },
+    Kerala: {
+      value: 899,
+    },
+    Lakshadweep: {
+      value: 15,
+    },
+    "Madhya Pradesh": {
+      value: 1176,
+    },
+    Maharashtra: {
+      value: 727,
+    },
+    Manipur: {
+      value: 314,
+    },
+    Meghalaya: {
+      value: 273,
+    },
+    Mizoram: {
+      value: 306,
+    },
+    Nagaland: {
+      value: 374,
+    },
+    Odisha: {
+      value: 395,
+    },
+    Puducherry: {
+      value: 245,
+    },
+    Punjab: {
+      value: 786,
+    },
+    Rajasthan: {
+      value: 1819,
+    },
+    Sikkim: {
+      value: 152,
+    },
+    "Tamil Nadu": {
+      value: 2296,
+    },
+    Telangana: {
+      value: 467,
+    },
+    Tripura: {
+      value: 194,
+    },
+    "Uttar Pradesh": {
+      value: 2944,
+    },
+    Uttarakhand: {
+      value: 1439,
+    },
+    "West Bengal": {
+      value: 1321,
+    },
   },
 };
 const companiesData = [
@@ -162,67 +168,6 @@ const companiesData = [
     storeFormats: ["Retail", "E-commerce"],
   },
 ];
-
-const barChartData = [
-  {
-    name: "Reliance Digital",
-    data: [200], // Number of stores
-  },
-  {
-    name: "Vijay Sales",
-    data: [150],
-  },
-  {
-    name: "Aditya Vision",
-    data: [100],
-  },
-  {
-    name: "Poojara",
-    data: [120],
-  },
-  {
-    name: "Bajaj Electronics",
-    data: [180],
-  },
-];
-
-const barChartOptions = {
-  chart: {
-    type: "bar",
-    height: 350,
-    toolbar: {
-      show: false,
-    },
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: "55%",
-      endingShape: "rounded",
-    },
-  },
-  dataLabels: {
-    enabled: true,
-  },
-  xaxis: {
-    categories: ["Total Stores"], // Label for the x-axis
-  },
-  fill: {
-    colors: ["#1E90FF"], // Bar color
-  },
-  title: {
-    text: "Total Number of Stores by Company",
-    align: "center",
-    style: {
-      fontSize: "20px",
-      fontWeight: "bold",
-      color: "#fff",
-    },
-  },
-  grid: {
-    borderColor: "#444",
-  },
-};
 
 export default function Dashboard() {
   return (
@@ -351,7 +296,7 @@ export default function Dashboard() {
             Store Distribution
           </Text>
           <MapStateHeatMap
-            data={data}
+            data={apiData.data}
             titleText=""
             legendTitleText="Number of stores deployed"
           />
@@ -367,14 +312,7 @@ export default function Dashboard() {
 }
 
 function InsightsSummary({}) {
-  const summary = `
-	Croma currently operates in 5 states with a total of 10 stores. 
-	The company holds a market share of 12%, with its strongest presence in regions such as 15. 
-	Over the past year, it has experienced a growth rate of 5%.
-  	Croma currently operates in 5 states with a total of 10 stores. 
-	The company holds a market share of 12%, with its strongest presence in regions such as 15. 
-	Over the past year, it has experienced a growth rate of 5%.
-  `;
+  const summary = apiData.summary;
 
   return (
     <Card mt="24px">
@@ -389,16 +327,7 @@ function InsightsSummary({}) {
 }
 
 function SuggestionsCard({}) {
-  const suggestions = `
-		Croma should consider increasing its store presence in underperforming regions like . 
-		There's also a growth opportunity in , where competitors like  
-		hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories, 
-		Croma could challenge the largest competitors such as .
-    		Croma should consider increasing its store presence in underperforming regions like . 
-		There's also a growth opportunity in , where competitors like  
-		hold significant market share. Furthermore, by adopting new formats or focusing on high-demand categories, 
-		Croma could challenge the largest competitors such as .
-		`;
+  const suggestions = apiData.suggestions;
 
   return (
     <Card>

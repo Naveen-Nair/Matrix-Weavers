@@ -25,6 +25,8 @@ import CommentsRow from "components/Tables/CommentsRow";
 import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
+import { FaRegCalendarAlt } from "react-icons/fa";
+
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
