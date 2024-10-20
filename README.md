@@ -186,5 +186,6 @@ docker compose up --build
 - Set environment variables: Create a `.env` file in the project root and add the following:
   
 ### 8. To run the scripts located in the `ML_Backend` folder, please ensure you download the necessary datasets from [this Google Drive link](https://drive.google.com/drive/folders/1ryWNRDqo_G5UGd9eULZYi3x3edHkuu-3?usp=sharing).
+- Place the data directories inside the ML_Backend folder
 
 
