@@ -1,4 +1,4 @@
-import BACKEND_URL from "../utils/API_CONSTS";
+import BACKEND_URL from "../../utils/API_CONSTS";
 
 const fetchRevenueTrendData = async (company) => {
   try {
