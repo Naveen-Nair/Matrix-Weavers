@@ -1,12 +1,11 @@
+import BACKEND_URL from "../utils/API_CONSTS";
+
 const fetchInitiativesTimeline = async () => {
   try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/initiatives/timeline",
-      {
-        // Adjust the URL to match your backend endpoint
-        method: "GET",
-      }
-    );
+    const response = await fetch(BACKEND_URL + "/initiatives/timeline", {
+      // Adjust the URL to match your backend endpoint
+      method: "GET",
+    });
     // console.log(response);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

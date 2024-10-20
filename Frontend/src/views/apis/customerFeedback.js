@@ -1,15 +1,14 @@
+import BACKEND_URL from "../utils/API_CONSTS";
+
 export const fetchBusinessInsights = async (company) => {
   try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/customerFeedback",
-      {
-        // Adjust the URL to match your backend endpoint
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(BACKEND_URL + "/customerFeedback", {
+      // Adjust the URL to match your backend endpoint
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

@@ -1,16 +1,15 @@
+import BACKEND_URL from "../utils/API_CONSTS";
+
 export const fetchgeographicaldata = async (company) => {
   try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/companyGeography",
-      {
-        // Adjust the URL to match your backend endpoint
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ company }),
-      }
-    );
+    const response = await fetch(BACKEND_URL + "/companyGeography", {
+      // Adjust the URL to match your backend endpoint
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ company }),
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -24,16 +23,13 @@ export const fetchgeographicaldata = async (company) => {
 
 export const fetchcompanyOverview = async () => {
   try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/companiesOverview",
-      {
-        // Adjust the URL to match your backend endpoint
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(BACKEND_URL + "/companiesOverview", {
+      // Adjust the URL to match your backend endpoint
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

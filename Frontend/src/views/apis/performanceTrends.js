@@ -1,7 +1,9 @@
+import BACKEND_URL from "../utils/API_CONSTS";
+
 const fetchRevenueTrendData = async (company) => {
   try {
     console.log(company);
-    const response = await fetch(process.env.BACKEND_URL + "/stockTrend", {
+    const response = await fetch(BACKEND_URL + "/stockTrend", {
       // Adjust the URL to match your backend endpoint
       method: "POST",
       headers: {

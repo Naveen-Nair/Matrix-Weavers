@@ -1,6 +1,8 @@
+import BACKEND_URL from "../utils/API_CONSTS";
+
 export const fetchBusinessModelSummary = async () => {
   try {
-    const response = await fetch(process.env.BACKEND_URL + "/businessModel", {
+    const response = await fetch(BACKEND_URL + "/businessModel", {
       // Adjust the URL to match your backend endpoint
       method: "GET",
       headers: {
@@ -20,8 +22,8 @@ export const fetchBusinessModelSummary = async () => {
 
 export const fetchBusinessData = async () => {
   try {
-    console.log(process.env.BACKEND_URL + "/businessData");
-    const response = await fetch(process.env.BACKEND_URL + "/businessData", {
+    console.log(BACKEND_URL + "/businessData");
+    const response = await fetch(BACKEND_URL + "/businessData", {
       // Adjust the URL to match your backend endpoint
       method: "GET",
       headers: {
@@ -41,17 +43,14 @@ export const fetchBusinessData = async () => {
 
 export const fetchBusinessInsights = async (company) => {
   try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/businessInsights",
-      {
-        // Adjust the URL to match your backend endpoint
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ company: company }),
-      }
-    );
+    const response = await fetch(BACKEND_URL + "/businessInsights", {
+      // Adjust the URL to match your backend endpoint
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ company: company }),
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
