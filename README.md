@@ -128,3 +128,26 @@ Once both the backend and frontend servers are running, the application can be a
 
 - **Frontend**: http://localhost:3000
 - **API**: http://localhost:3001
+
+
+## Docker Setup for Backend
+
+### 7. Create .env file to store Environment Variables
+
+- Set environment variables: Create a `.env` file in the project root and add the following:
+
+```bash
+MONGODB_URI=mongodb+srv://user_1_spider:user_1_spider@cluster0.gpmuqfi.mongodb.net/Chroma_app
+PORT=3001
+
+#For mongo-express admin monitoring
+ME_PORT=3002
+ME_CONFIG_MONGODB_SERVER=localhost
+ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+ME_CONFIG_BASICAUTH_USERNAME=test_user
+ME_CONFIG_BASICAUTH_PASSWORD=1234
+```
+- Then run:
+```bash
+docker compose up --build
+```
