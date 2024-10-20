@@ -40,7 +40,7 @@ directory_path = 'dataset_combined'  # Replace with your directory path
 txt_files = get_txt_files(directory_path)
 
 
-os. environ ["OPENAI_API_KEY"] = "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"
+os. environ ["OPENAI_API_KEY"] = api_key
 
 from LightRAG.lightrag import LightRAG, QueryParam
 

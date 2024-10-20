@@ -34,7 +34,7 @@ print(" * ngrok tunnel \"{}\"".format(public_url))
 app.config["BASE_URL"] = public_url
 # allowed_origins = ["https://404c-14-139-162-2.ngrok-free.app"]
 # CORS(app, supports_credentials=True, origins=allowed_origins)
-os.environ ["OPENAI_API_KEY"] = "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"
+os.environ ["OPENAI_API_KEY"] = api_key
 
 # Load environment variables (like OpenAI API key)
 load_dotenv()
@@ -48,9 +48,6 @@ db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function
 
 print("db loaded")
 
-import os
-
-os. environ ["OPENAI_API_KEY"] = "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"
 
 from LightRAG.lightrag import LightRAG, QueryParam
 
