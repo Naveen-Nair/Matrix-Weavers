@@ -2,8 +2,8 @@ import { Text } from "@chakra-ui/react";
 import Card from "components/Card/Card.js";
 import Chart from "react-apexcharts";
 
-const ProductPortfolio = () => {
-  const data = productData;
+const ProductPortfolio = ({businessData}) => {
+  const data = businessData;
   const chartOptions = {
     chart: {
       type: "bar",
@@ -65,37 +65,37 @@ const ProductPortfolio = () => {
   );
 };
 
-const productData = [
-  {
-    name: "Reliance Digital",
-    electronics: 60,
-    appliances: 30,
-    privateLabels: 10,
-  },
-  {
-    name: "Vijay Sales",
-    electronics: 55,
-    appliances: 35,
-    privateLabels: 10,
-  },
-  {
-    name: "Aditya Vision",
-    electronics: 40,
-    appliances: 40,
-    privateLabels: 20,
-  },
-  {
-    name: "Poojara",
-    electronics: 45,
-    appliances: 45,
-    privateLabels: 10,
-  },
-  {
-    name: "Bajaj Electronics",
-    electronics: 50,
-    appliances: 25,
-    privateLabels: 25,
-  },
-];
+// const productData = [
+//   {
+//     name: "Reliance Digital",
+//     electronics: 60,
+//     appliances: 30,
+//     privateLabels: 10,
+//   },
+//   {
+//     name: "Vijay Sales",
+//     electronics: 55,
+//     appliances: 35,
+//     privateLabels: 10,
+//   },
+//   {
+//     name: "Aditya Vision",
+//     electronics: 40,
+//     appliances: 40,
+//     privateLabels: 20,
+//   },
+//   {
+//     name: "Poojara",
+//     electronics: 45,
+//     appliances: 45,
+//     privateLabels: 10,
+//   },
+//   {
+//     name: "Bajaj Electronics",
+//     electronics: 50,
+//     appliances: 25,
+//     privateLabels: 25,
+//   },
+// ];
 
 export default ProductPortfolio;

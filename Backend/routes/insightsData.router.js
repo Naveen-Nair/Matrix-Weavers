@@ -3,6 +3,6 @@ const router = express.Router();
 const insightsDataController = require("../controllers/insightsData.controller");
 
 // Define the route for getting insights data
-router.get("/", insightsDataController.getInsightsData);
+router.post("/", insightsDataController.getInsightsData);
 
 module.exports = router;

@@ -24,7 +24,7 @@ router.use("/CustomerDetailed", customerDetailedRouter);
 router.use("/CompanyFeedback", CompanyFeedbackRouter);
 router.use("/businessModel", businessModel);
 router.use("/businessData", businessData);
-router.use("/insights", insightsRouter);
+router.use("/businessInsights", insightsRouter);
 router.use("/initiatives", initiative)
 router.use("/companyInsights", companyInsights);
 router.use("/companyGeography", companyGeography);

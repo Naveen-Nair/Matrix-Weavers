@@ -2,57 +2,7 @@ import { Text } from "@chakra-ui/react";
 import Card from "components/Card/Card.js";
 import Chart from "react-apexcharts";
 
-const ChannelBreakdown = ({}) => {
-  const chartOptions = {
-    labels: ["Store", "Online", "B2B"],
-    colors: ["#A7C6ED", "#B3E5B7", "#FFE4A3"], // Lighter colors for pie chart items
-    tooltip: {
-      style: {
-        fontSize: "14px",
-        color: "#fff", // Tooltip text color
-      },
-      theme: "dark", // Set tooltip background color to black
-    },
-    xaxis: {
-      labels: {
-        style: {
-          colors: "#D3D3D3", // Lighter color for x-axis labels
-        },
-      },
-    },
-    legend: {
-      position: "bottom",
-      markers: {
-        fillColors: ["#7FBCFF", "#A4E0B7", "#FFDA8D"], // Match legend colors with labels
-      },
-      labels: {
-        colors: "#fff", // Light color for legend text
-      },
-    },
-  };
-
-  const chartSeries = channelData.map((company) => ({
-    name: company.name,
-    data: [company.store, company.online, company.b2b],
-  }));
-
-  return (
-    <Card p="20px" color="white" borderRadius="15px" mb="24px" boxShadow="xl">
-      <Text fontSize="2xl" fontWeight="bold" mb="20px">
-        Channel Breakdown
-      </Text>
-      <Chart
-        options={chartOptions}
-        series={chartSeries}
-        type="bar"
-        width="100%"
-      />
-    </Card>
-  );
-};
-
-export default ChannelBreakdown;
-
+// Move channelData above the ChannelBreakdown component
 const channelData = [
   {
     name: "Reliance Digital",
@@ -85,3 +35,54 @@ const channelData = [
     b2b: 10,
   },
 ];
+
+const ChannelBreakdown = ({ businessData }) => {  
+  const chartOptions = {
+    labels: ["Store", "Online", "B2B"],
+    colors: ["#A7C6ED", "#B3E5B7", "#FFE4A3"], // Lighter colors for pie chart items
+    tooltip: {
+      style: {
+        fontSize: "14px",
+        color: "#fff", // Tooltip text color
+      },
+      theme: "dark", // Set tooltip background color to black
+    },
+    xaxis: {
+      labels: {
+        style: {
+          colors: "#D3D3D3", // Lighter color for x-axis labels
+        },
+      },
+    },
+    legend: {
+      position: "bottom",
+      markers: {
+        fillColors: ["#7FBCFF", "#A4E0B7", "#FFDA8D"], // Match legend colors with labels
+      },
+      labels: {
+        colors: "#fff", // Light color for legend text
+      },
+    },
+  };
+
+  const chartSeries = businessData.map((company) => ({
+    name: company.name,
+    data: [company.store, company.online, company.b2b],
+  }));
+
+  return (
+    <Card p="20px" color="white" borderRadius="15px" mb="24px" boxShadow="xl">
+      <Text fontSize="2xl" fontWeight="bold" mb="20px">
+        Channel Breakdown
+      </Text>
+      <Chart
+        options={chartOptions}
+        series={chartSeries}
+        type="bar"
+        width="100%"
+      />
+    </Card>
+  );
+};
+
+export default ChannelBreakdown;

@@ -20,11 +20,11 @@ const CompanyTable = ({ setSelectedCompany }) => {
         focusBorderColor='teal.400' // Border color when focused
         _hover={{ bg: 'gray.700' }} // Slightly lighter gray on hover
       >
-        <option style={{ color: 'black' }} value='reliance'>Reliance Digital</option>
-        <option style={{ color: 'black' }} value='vijaySales'>Vijay Sales</option>
-        <option style={{ color: 'black' }} value='adityaVision'>Aditya Vision</option>
-        <option style={{ color: 'black' }} value='poojara'>Poojara</option>
-        <option style={{ color: 'black' }} value='bajaj'>Bajaj Electronics</option>
+        <option style={{ color: 'black' }} value='Reliance Digital'>Reliance Digital</option>
+        <option style={{ color: 'black' }} value='Vijay Sales'>Vijay Sales</option>
+        <option style={{ color: 'black' }} value='Aditya Vision'>Aditya Vision</option>
+        <option style={{ color: 'black' }} value='Poojara'>Poojara</option>
+        <option style={{ color: 'black' }} value='Bajaj Electronics'>Bajaj Electronics</option>
       </Select>
     </div>
   );

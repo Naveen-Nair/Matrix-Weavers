@@ -25,10 +25,10 @@ import fetchInitiativesTables from "views/apis/initiativesTable.js";
 import fetchInitiativesTimeline from "views/apis/initiativesTimeline.js";
 
 export default function StrategicInitiatives() {
-  const [initiative, setInitiative] = useState(0)
-  const [selcomp, selectCompany] = useState("reliance")
+  const [initiative, setInitiative] = useState(0);
+  const [selcomp, selectCompany] = useState("Poojara");
   const [tablelist, setTablelist] = useState([]);
-  const [timelinelist, setTimelinelist] = useState([{title:"test", indetail:"test"}])
+  const [timelinelist, setTimelinelist] = useState([{title:"test", indetail:"test"}]);
 
   function fetchTables(){
     fetchInitiativesTables().then((res)=>{

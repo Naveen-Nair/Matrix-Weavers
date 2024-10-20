@@ -3,7 +3,8 @@ const InsightsData = require("../models/buisness_model/insightsData");
 // Controller method to get insights data
 exports.getInsightsData = async (req, res) => {
   try {
-    const insightsData = await InsightsData.find(); // Fetch the data
+    const {company} = req.body;
+    const insightsData = await InsightsData.find({"companyName" : company});
     if (!insightsData) {
       return res.status(404).json({ message: "No insights data found." });
     }

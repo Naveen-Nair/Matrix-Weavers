@@ -2,7 +2,8 @@ import { Text } from "@chakra-ui/react";
 import Card from "components/Card/Card.js";
 import Chart from "react-apexcharts";
 
-const CustomerSegmentDistribution = ({ data = customerSegmentData }) => {
+const CustomerSegmentDistribution = ({ businessData }) => {
+  const data = businessData;
   const chartOptions = {
     chart: {
       type: "bubble",
