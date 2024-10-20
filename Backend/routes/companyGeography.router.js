@@ -6,6 +6,6 @@ const {
 } = require("../controllers/companyGeography.controller.js");
 
 // Get all companies
-router.get("/", getAllCompanies);
+router.post("/", getAllCompanies);
 
 module.exports = router;

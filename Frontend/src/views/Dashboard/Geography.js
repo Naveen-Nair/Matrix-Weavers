@@ -8,6 +8,8 @@ import {
   Thead,
   Td,
   Tr,
+  VStack,
+  Box
 } from "@chakra-ui/react";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -15,7 +17,8 @@ import CardHeader from "components/Card/CardHeader.js";
 import React from "react";
 import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { fetchgeographicaldata, fetchcompanyOverview } from "views/apis/goegraphical_presence.js";
 const apiData = {
   summary:
     "Croma currently operates in 5 states with a total of 10 stores. The company holds a market share of 12%, with its strongest presence in regions such as 15. Over the past year, it has experienced a growth rate of 5%. Croma currently operates in 5 states with a total of 10 stores.  The company holds a market share of 12%, with its strongest presence in regions such as 15.  Over the past year, it has experienced a growth rate of 5%.",
@@ -170,7 +173,22 @@ const companiesData = [
 ];
 
 export default function Dashboard() {
-  const [selcomp, selectCompany] = useState("reliance");
+  const [selcomp, selectCompany] = useState("Reliance Digital");
+  const [geographyData, setgeographyData] = useState([]);
+  const [companyOverviewData, setcompanyOverviewData] = useState([]);
+
+
+  useEffect(() => {
+    fetchgeographicaldata(selcomp).then((data) => {
+      console.log(data[0].data);
+      setgeographyData(data);
+    });
+    fetchcompanyOverview().then((data) => {
+      console.log(data);
+      setcompanyOverviewData(data);
+    });
+  }, [selcomp]);
+
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }} gap="20px">
       <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
@@ -287,7 +305,7 @@ export default function Dashboard() {
         </Text>
         <CompanyDropDown setSelectedCompany={selectCompany} />
       </Card>
-
+      {geographyData && geographyData[0] &&
       <Grid
         templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
         gap="24px"
@@ -297,38 +315,54 @@ export default function Dashboard() {
             Store Distribution
           </Text>
           <MapStateHeatMap
-            data={apiData.data}
+            data={geographyData[0].data}
             titleText=""
             legendTitleText="Number of stores deployed"
           />
         </Card>
         <div>
-          <SuggestionsCard />
-
-          <InsightsSummary />
+          <SuggestionsCard geoData = {geographyData[0].suggestions} />
+          <InsightsSummary geoData = {geographyData[0].performanceTrendsSummary}/>
         </div>
-      </Grid>
+      </Grid>}
     </Flex>
   );
 }
 
-function InsightsSummary({}) {
-  const summary = apiData.summary;
-
+function InsightsSummary({geoData}) {
+  const insights = geoData;
   return (
-    <Card mt="24px">
-      <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
-        Insights Summary
+    <Card
+      p="20px"
+      color="white"
+      borderRadius="15px"
+      mb="24px"
+      boxShadow="xl"
+      mt="24px"
+    >
+      <Text fontSize="2xl" fontWeight="bold" mt="20px">
+        Insights
       </Text>
-      <Text color="gray.400" fontSize="md">
-        {summary}
-      </Text>
+      <VStack align="start" spacing={4}>
+        {insights.map((item, index) => (
+          <Box
+            key={index}
+            p="10px"
+            borderWidth="1px"
+            borderRadius="8px"
+            borderColor="gray.600"
+          >
+            {/* <Text fontWeight="bold">{item.title}</Text> */}
+            <Text color="gray.400">{item}</Text>
+          </Box>
+        ))}
+      </VStack>
     </Card>
   );
 }
 
-function SuggestionsCard({}) {
-  const suggestions = apiData.suggestions;
+function SuggestionsCard({geoData}) {
+  const suggestions = geoData;
 
   return (
     <Card>
