@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const customerFeedbackController = require('../controllers/customerFeedback.controller');
+const router = require("express").Router();
+const customerFeedbackController = require("../controllers/customerFeedback.controller");
 
-router.get('/', customerFeedbackController.findAll);
+router.get("/", customerFeedbackController.findAll);
 
 module.exports = router;

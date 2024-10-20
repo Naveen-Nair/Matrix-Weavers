@@ -296,6 +296,43 @@ const BusinessModelInsights = ({ insights = insightsData }) => {
   );
 };
 
+const BusinessModelSummary = ({ summaryData = summaryDataText }) => {
+  return (
+    <Card p="20px" color="white" borderRadius="15px" mt="24px" boxShadow="xl">
+      <Text fontSize="2xl" fontWeight="bold" mb="20px">
+        Business Model Summary
+      </Text>
+      <Text color="gray.400" mb="10px">
+        {summaryData.description}
+      </Text>
+      <VStack align="start" spacing={4}>
+        <Box
+          p="10px"
+          borderWidth="1px"
+          borderRadius="8px"
+          borderColor="gray.600"
+        >
+          <Text fontWeight="bold" mb="5px">
+            Key Strengths:
+          </Text>
+          <Text color="gray.400">{summaryData.strengths.join(", ")}</Text>
+        </Box>
+        <Box
+          p="10px"
+          borderWidth="1px"
+          borderRadius="8px"
+          borderColor="gray.600"
+        >
+          <Text fontWeight="bold" mb="5px">
+            Areas of Excellence:
+          </Text>
+          <Text color="gray.400">{summaryData.excellence.join(", ")}</Text>
+        </Box>
+      </VStack>
+    </Card>
+  );
+};
+
 const insightsData = [
   {
     title: "Strengths",
@@ -341,42 +378,6 @@ const summaryDataText = {
   ],
 };
 
-const BusinessModelSummary = ({ summaryData = summaryDataText }) => {
-  return (
-    <Card p="20px" color="white" borderRadius="15px" mt="24px" boxShadow="xl">
-      <Text fontSize="2xl" fontWeight="bold" mb="20px">
-        Business Model Summary
-      </Text>
-      <Text color="gray.400" mb="10px">
-        {summaryData.description}
-      </Text>
-      <VStack align="start" spacing={4}>
-        <Box
-          p="10px"
-          borderWidth="1px"
-          borderRadius="8px"
-          borderColor="gray.600"
-        >
-          <Text fontWeight="bold" mb="5px">
-            Key Strengths:
-          </Text>
-          <Text color="gray.400">{summaryData.strengths.join(", ")}</Text>
-        </Box>
-        <Box
-          p="10px"
-          borderWidth="1px"
-          borderRadius="8px"
-          borderColor="gray.600"
-        >
-          <Text fontWeight="bold" mb="5px">
-            Areas of Excellence:
-          </Text>
-          <Text color="gray.400">{summaryData.excellence.join(", ")}</Text>
-        </Box>
-      </VStack>
-    </Card>
-  );
-};
 const segmentsData = [
   {
     title: "Marketing Strategy & Media Presence",
