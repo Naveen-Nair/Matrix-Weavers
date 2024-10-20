@@ -200,7 +200,7 @@ const CompanyAnalysis = ({ data = apiData }) => {
 };
 
 const PerformanceTrendsSummary = ({
-  summary = apiDataSummary.performanceTrendsSummary,
+  summary = apiData.performanceTrendsSummary,
 }) => {
   return (
     <Card p={4} mt={"24px"}>
@@ -217,7 +217,9 @@ const PerformanceTrendsSummary = ({
     </Card>
   );
 };
-const apiDataSummary = {
+
+const apiData = {
+  companyName: "Reliance",
   performanceTrendsSummary: [
     "The company's revenue has seen a steady increase over the past year, driven primarily by their expansion into digital markets and strategic partnerships with technology firms. Revenue growth for the year was reported at 15%, indicating strong performance in emerging sectors.",
     "Market share has also grown, now accounting for 28% of the overall e-commerce market. This is largely due to recent acquisitions, which have strengthened the company's presence in key regions.",
@@ -225,10 +227,6 @@ const apiDataSummary = {
     "Additionally, the company has been successful in improving its cost efficiency, reducing operational costs by 5% over the past year, thanks to better supply chain management and automation efforts.",
     "Customer retention remains a strong point, with an 88% retention rate. This is attributed to improved customer service and enhanced digital experiences.",
   ],
-};
-
-const apiData = {
-  companyName: "Reliance",
   strategicInitiatives: {
     investments: [
       { year: "2023", amount: "2 Billion USD", focus: "E-commerce Platforms" },

@@ -12,6 +12,7 @@ const CompanyFeedbackRouter = require("./CompanyFeedback.router");
 const businessModel = require("./businessModel.router");
 const businessData = require("./businessData.router");
 const insightsRouter = require("./insightsData.router");
+const companyInsights = require("./companyInsights.router");
 
 //Setting up routers
 router.use("/stockTrend", stockRouter);
@@ -22,4 +23,6 @@ router.use("/CompanyFeedback", CompanyFeedbackRouter);
 router.use("/businessModel", businessModel);
 router.use("/businessData", businessData);
 router.use("/insights", insightsRouter);
+router.use("/companyInsights", companyInsights);
+
 module.exports = router;
