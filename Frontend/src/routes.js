@@ -3,21 +3,12 @@ import BusinessModel from "views/Dashboard/BusinessModel.js";
 import PerformanceTrends from "views/Dashboard/PerformanceTrends.js";
 import CustomerFeedback from "views/Dashboard/CustomerFeedback.js";
 import GeogrpahicalCoverage from "views/Dashboard/Geography.js";
-import FutureOutlook from "views/Dashboard/FutureOutlook.js";
 import StrategicInitiatives from "views/Dashboard/StrategicInitiatives.js";
 // import Profile from "views/Dashboard/Profile.js";
 // import SignIn from "views/Pages/SignIn.js";
 // import SignUp from "views/Pages/SignUp.js";
 
-import {
-  HomeIcon,
-  StatsIcon,
-  CreditIcon,
-  PersonIcon,
-  DocumentIcon,
-  RocketIcon,
-  SupportIcon,
-} from "components/Icons/Icons";
+import { HomeIcon, StatsIcon, CreditIcon } from "components/Icons/Icons";
 
 var dashRoutes = [
   {
