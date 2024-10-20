@@ -1,3 +1,7 @@
+To enhance your README file with more details about the Machine Learning (ML) component, I'll include explanations about the data scraping, knowledge graph construction using LightRAG, and how the ML models contribute to generating competitive insights. Here's the extended version of the README:
+
+---
+
 # Competitive Intelligence Solution for Croma
 
 ## Project Overview
@@ -52,6 +56,35 @@ The solution is expected to provide summarized competitive intelligence based on
 4. **Performance Trends**: Key metrics, such as NPS and overall satisfaction rate, displayed in a user-friendly manner for comparison.
 5. **Strategic Initiatives**: Insights into major strategic moves like investments and acquisitions.
 6. **Future Outlook**: Predictive analysis on the future positioning of competitors based on the gathered data.
+
+---
+
+## Machine Learning Component
+
+### 1. **Data Collection and Scraping**
+We utilized web scraping techniques to collect large volumes of publicly available data from multiple sources, including competitor websites, news articles, product reviews, financial reports, and social media platforms. This data forms the backbone of the competitive intelligence solution, covering various aspects of business operations for major electronics retailers in India.
+
+### 2. **LightRAG for Knowledge Graph Construction**
+We used **LightRAG**, a lightweight variant of GraphRAG, to build a knowledge graph from the scraped data. This allowed us to:
+   - Structure and represent relationships between different entities, such as competitors, products, strategic initiatives, and customer feedback.
+   - Organize the vast amount of data into meaningful segments for efficient retrieval and analysis.
+   - Enable the system to answer complex, multi-hop queries by reasoning over the knowledge graph, enhancing the depth of insights generated.
+
+### 3. **Natural Language Processing (NLP) and Sentiment Analysis**
+   - Sentiment analysis is performed on customer reviews and feedback across various platforms to generate actionable insights on customer sentiment for each competitor.
+   - The NLP models categorize feedback into positive, negative, and neutral sentiments and provide summaries of the most frequent issues and strengths mentioned by customers.
+
+### 4. **Generative AI for Intelligence Summarization**
+Generative AI models, powered by large language models (LLMs), are employed to:
+   - Summarize complex data points into human-readable insights for each competitor. These insights cover key differentiators, geographical presence, performance trends, and more.
+   - Automate the generation of intelligence reports, which are then presented in the frontend via API integration.
+
+### 5. **Predictive Analytics for Future Outlook**
+The ML models also perform **predictive analysis** using historical performance trends and strategic initiatives to estimate future growth, potential challenges, and shifts in the competitive landscape. This helps in providing Croma with an actionable outlook on where the market might head.
+
+### 6. **API Integration for Intelligent Responses**
+   - The backend integrates with the LightRAG model to fetch relevant insights in real time based on user queries.
+   - APIs are designed to allow seamless data flow between the frontend and the backend, ensuring that the ML-generated insights are displayed in a user-friendly format.
 
 ---
 
@@ -129,6 +162,7 @@ Once both the backend and frontend servers are running, the application can be a
 - **Frontend**: http://localhost:3000
 - **API**: http://localhost:3001
 
+---
 
 ## Docker Setup for Backend
 
@@ -151,3 +185,4 @@ ME_CONFIG_BASICAUTH_PASSWORD=1234
 ```bash
 docker compose up --build
 ```
+
