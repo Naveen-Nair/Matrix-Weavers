@@ -22,7 +22,7 @@ export const fetchBusinessModelSummary = async () => {
 
 export const fetchBusinessData = async () => {
   try {
-    console.log(BACKEND_URL + "/businessData");
+    // console.log(BACKEND_URL + "/businessData");
     const response = await fetch(BACKEND_URL + "/businessData", {
       // Adjust the URL to match your backend endpoint
       method: "GET",

@@ -28,7 +28,7 @@ const ChatbotModal = ({ isOpen, onClose }) => {
   const [question, setQuestion] = useState("");
 
   function onSubmission() {
-    console.log(question);
+    // console.log(question);
   }
 
   const [messages, setMessages] = useState([
@@ -96,7 +96,7 @@ const ChatbotModal = ({ isOpen, onClose }) => {
       }
 
       const data = await response.json();
-      console.log("Response:", data);
+      // console.log("Response:", data);
       // Handle the response data as needed
       const text = convertMarkdownToText(data.response);
 

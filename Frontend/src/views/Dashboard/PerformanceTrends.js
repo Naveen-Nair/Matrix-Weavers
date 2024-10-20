@@ -12,7 +12,7 @@ import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
 const PerformanceTrends = () => {
   const [companiesData, setCompaniesData] = useState([]);
-  const [selcomp, selectCompany] = useState("reliance")
+  const [selcomp, selectCompany] = useState("reliance");
   useEffect(() => {
     const fetchAllCompaniesData = async () => {
       const companies = [
@@ -22,7 +22,7 @@ const PerformanceTrends = () => {
         // "aditya_vision",
         // "poojara",
       ]; // Add all your company names here
-      console.log(companies);
+      // console.log(companies);
       const allCompaniesData = await Promise.all(
         companies.map((company) => fetchRevenueTrendData(company))
       ).catch((error) => console.error("Error fetching data:", error));
@@ -41,7 +41,7 @@ const PerformanceTrends = () => {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card gridColumn="1 / -1" gridRow="1">
-        <CompanyDropDown setSelectedCompany={selectCompany}/>
+        <CompanyDropDown setSelectedCompany={selectCompany} />
       </Card>
       <PerformanceTrendsSummary />
 

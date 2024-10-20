@@ -60,35 +60,44 @@ The solution is expected to provide summarized competitive intelligence based on
 ## Machine Learning Component
 
 ### 1. **Data Collection and Scraping**
+
 We utilized web scraping techniques to collect large volumes of publicly available data from multiple sources, including competitor websites, news articles, product reviews, financial reports, and social media platforms. This data forms the backbone of the competitive intelligence solution, covering various aspects of business operations for major electronics retailers in India.
 
 ### 2. **LightRAG for Knowledge Graph Construction**
+
 We used **LightRAG**, a lightweight variant of GraphRAG, to build a knowledge graph from the scraped data. This allowed us to:
-   - Structure and represent relationships between different entities, such as competitors, products, strategic initiatives, and customer feedback.
-   - Organize the vast amount of data into meaningful segments for efficient retrieval and analysis.
-   - Enable the system to answer complex, multi-hop queries by reasoning over the knowledge graph, enhancing the depth of insights generated.
+
+- Structure and represent relationships between different entities, such as competitors, products, strategic initiatives, and customer feedback.
+- Organize the vast amount of data into meaningful segments for efficient retrieval and analysis.
+- Enable the system to answer complex, multi-hop queries by reasoning over the knowledge graph, enhancing the depth of insights generated.
 
 ### 3. **Natural Language Processing (NLP) and Sentiment Analysis**
-   - Sentiment analysis is performed on customer reviews and feedback across various platforms to generate actionable insights on customer sentiment for each competitor.
-   - The NLP models categorize feedback into positive, negative, and neutral sentiments and provide summaries of the most frequent issues and strengths mentioned by customers.
+
+- Sentiment analysis is performed on customer reviews and feedback across various platforms to generate actionable insights on customer sentiment for each competitor.
+- The NLP models categorize feedback into positive, negative, and neutral sentiments and provide summaries of the most frequent issues and strengths mentioned by customers.
 
 ### 4. **Generative AI for Intelligence Summarization**
+
 Generative AI models, powered by large language models (LLMs), are employed to:
-   - Summarize complex data points into human-readable insights for each competitor. These insights cover key differentiators, geographical presence, performance trends, and more.
-   - Automate the generation of intelligence reports, which are then presented in the frontend via API integration.
+
+- Summarize complex data points into human-readable insights for each competitor. These insights cover key differentiators, geographical presence, performance trends, and more.
+- Automate the generation of intelligence reports, which are then presented in the frontend via API integration.
 
 ### 5. **Predictive Analytics for Future Outlook**
+
 The ML models also perform **predictive analysis** using historical performance trends and strategic initiatives to estimate future growth, potential challenges, and shifts in the competitive landscape. This helps in providing Croma with an actionable outlook on where the market might head.
 
 ### 6. **API Integration for Intelligent Responses**
-   - The backend integrates with the LightRAG model to fetch relevant insights in real time based on user queries.
-   - APIs are designed to allow seamless data flow between the frontend and the backend, ensuring that the ML-generated insights are displayed in a user-friendly format.
+
+- The backend integrates with the LightRAG model to fetch relevant insights in real time based on user queries.
+- APIs are designed to allow seamless data flow between the frontend and the backend, ensuring that the ML-generated insights are displayed in a user-friendly format.
 
 ---
 
 ## Installation and Setup
 
 ### Prerequisites
+
 - Node.js
 - MongoDB
 - Git
@@ -144,9 +153,10 @@ npm install
 - Set environment variables: Create a `.env` file in the project root and add the following:
 
 ```bash
-BACKEND_URL=http://localhost:3001/
+BACKEND_URL=http://localhost:3001
 PORT=3000
 ```
+
 ### 7. Start the Frontend Server
 
 ```bash
@@ -179,13 +189,15 @@ ME_CONFIG_MONGODB_ENABLE_ADMIN=true
 ME_CONFIG_BASICAUTH_USERNAME=test_user
 ME_CONFIG_BASICAUTH_PASSWORD=1234
 ```
+
 - Then run:
+
 ```bash
 docker compose up --build
 ```
+
 - Set environment variables: Create a `.env` file in the project root and add the following:
-  
+
 ### 8. To run the scripts located in the `ML_Backend` folder, please ensure you download the necessary datasets from [this Google Drive link](https://drive.google.com/drive/folders/1ryWNRDqo_G5UGd9eULZYi3x3edHkuu-3?usp=sharing).
+
 - Place the data directories inside the ML_Backend folder
-
-

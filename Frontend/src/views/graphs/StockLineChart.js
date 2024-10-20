@@ -35,7 +35,7 @@ class LineChart extends React.Component {
 
   componentDidMount() {
     const { lineChartData } = this.props;
-    console.log(lineChartData);
+    // console.log(lineChartData);
     // Process data for the chart
     const categories = lineChartData["price"].map((data) => data[0]);
     const prices = lineChartData["price"].map((data) => data[1]);
