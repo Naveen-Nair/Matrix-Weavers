@@ -13,6 +13,7 @@ Croma is seeking to understand its competitive landscape, particularly among omn
 ### Project Objective
 
 The primary objective is to develop a Generative AI-powered solution to:
+
 1. Scan publicly available data on organized electronics retailers in India.
 2. Provide insights into key areas that define Croma’s competitive landscape, including:
    - **Key differentiators in business models** (channels, product portfolio, customer segments, marketing strategies, etc.)
@@ -23,7 +24,9 @@ The primary objective is to develop a Generative AI-powered solution to:
    - **Future outlook** (growth plans, strategic moves).
 
 ### Competitive Landscape
+
 The key competitors include:
+
 - **Reliance Digital**
 - **Vijay Sales**
 - **Aditya Vision**
@@ -31,17 +34,19 @@ The key competitors include:
 - **Bajaj Electronics**
 
 ### Expected Outcomes
+
 The solution is expected to provide summarized competitive intelligence based on various parameters such as business model differentiators, geographical presence, performance trends, customer feedback, strategic initiatives, and future outlook for the key competitors.
 
 ---
 
 ## Images Video and Description
 
-### Video link: [link](https://drive.google.com/file/d/1t466etBU1ZidwU0Yn30errTmQAouc15h)
+### Video link: [link](https://drive.google.com/drive/folders/1t466etBU1ZidwU0Yn30errTmQAouc15h)
 
 ### Presentation link: [link](https://drive.google.com/file/d/1Q1G937u1PO3tda-tbiYvE1eei1g7C8q7/view?usp=sharing)
 
 ### Images
+
 ![image 1](./Frontend/public/croma1.png)
 ![image 2](./Frontend/public/croma2.png)
 ![image 3](./Frontend/public/croma3.png)
@@ -222,4 +227,3 @@ docker compose up --build
 ### 8. To run the scripts located in the `ML_Backend` folder, please ensure you download the necessary datasets from [this Google Drive link](https://drive.google.com/drive/folders/1ryWNRDqo_G5UGd9eULZYi3x3edHkuu-3?usp=sharing).
 
 - Place the data directories inside the ML_Backend folder
-
