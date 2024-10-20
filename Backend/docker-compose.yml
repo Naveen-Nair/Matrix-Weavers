@@ -4,33 +4,6 @@ services:
     build: .
     container_name: matrix-weavers-backend
     ports:
-      - ${BACKEND_PORT}:${BACKEND_PORT}
-    depends_on:
-      - mongo
+      - ${PORT}:${PORT}
     env_file: .env
 
-  mongo:
-    image: mongo
-    container_name: matrix-weavers-mongodb
-    restart: always
-    volumes:
-      - mongodb:/data/db
-      - mongoconfig:/data/configdb
-    env_file: .env
-
-
-  mongo-express:
-    image: mongo-express
-    container_name: matrix-weavers-mongo-express
-    restart: always
-    depends_on:
-      - mongo
-    ports:
-      - ${ME_PORT}:8081
-    env_file: .env
-
-
-
-volumes:
-  mongodb:
-  mongoconfig:

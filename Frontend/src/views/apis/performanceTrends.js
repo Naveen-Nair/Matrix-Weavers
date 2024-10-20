@@ -1,7 +1,7 @@
 const fetchRevenueTrendData = async (company) => {
   try {
     console.log(company);
-    const response = await fetch("http://localhost:3001/stockTrend", {
+    const response = await fetch(process.env.BACKEND_URL + "/stockTrend", {
       // Adjust the URL to match your backend endpoint
       method: "POST",
       headers: {
