@@ -13,6 +13,8 @@ import {
   Box,
   VStack,
   background,
+  Spinner,
+  Flex,
 } from "@chakra-ui/react";
 import {
   MainContainer,
@@ -37,11 +39,19 @@ const ChatbotModal = ({ isOpen, onClose }) => {
       direction: "incoming",
     },
   ]);
+  const [isMessageLoading, setIsMessageLoading] = useState(false);
   function convertMarkdownToText(markdown) {
-    // Convert Markdown to plain text
+    // Convert Markdown to plain text with bold formatting
     const plainText = markdown
-      // Remove Markdown headers (e.g., ###)
-      .replace(/#+\s+/g, "")
+      // Convert headings to bold text (optional: can be converted into other formatting)
+      .replace(/^###\s+(.*?)(\n|$)/gm, "<strong>$1</strong>\n") // ### Heading 3
+      .replace(/^##\s+(.*?)(\n|$)/gm, "<strong>$1</strong>\n") // ## Heading 2
+      .replace(/^#\s+(.*?)(\n|$)/gm, "<strong>$1</strong>\n") // # Heading 1
+      // Replace bold syntax (__ or **) with <strong> tags
+      .replace(
+        /\*\*(.*?)\*\*|__(.*?)__/g,
+        (match, p1, p2) => `<strong>${p1 || p2}</strong>`
+      )
       // Replace double line breaks with a unique marker
       .replace(/\n\n+/g, "<<BR>>")
       // Replace single line breaks with a space
@@ -67,10 +77,11 @@ const ChatbotModal = ({ isOpen, onClose }) => {
       direction: "outgoing",
     };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setIsMessageLoading(true);
 
     try {
       const response = await fetch(
-        "https://5529-2401-4900-628d-3a07-3c6a-354-4c5-75bf.ngrok-free.app/askGRAG",
+        "https://2b84-14-139-162-2.ngrok-free.app/askGRAG",
         {
           method: "POST",
           headers: {
@@ -92,8 +103,8 @@ const ChatbotModal = ({ isOpen, onClose }) => {
       const newMessage = {
         message: text,
         sentTime: "just now",
-        sender: "You",
-        direction: "outgoing",
+        sender: "Joe",
+        direction: "incoming",
       };
 
       // Update the state with the new message
@@ -101,6 +112,9 @@ const ChatbotModal = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error("Error:", error);
       // Handle error as needed
+    } finally {
+      // Set the loading state back to false once the request completes
+      setIsMessageLoading(false);
     }
   };
 
@@ -111,37 +125,7 @@ const ChatbotModal = ({ isOpen, onClose }) => {
         <ModalHeader>Chat with our Assistant</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          {/* <VStack spacing={4} align="stretch">
-            <Textarea
-              placeholder="Type your message..."
-              size="lg"
-              resize="none"
-              rows={5}
-              onChange={(e)=>{setQuestion(e.target.value)}}
-            />
-            <Box textAlign="right">
-              <Button colorScheme="blue" size="lg" onClick={onSubmission}>
-                Send
-              </Button>
-            </Box>
-          </VStack> */}
           <div style={{ position: "relative", height: "500px" }}>
-            {/* <MainContainer>
-    <ChatContainer>
-      <MessageList>
-        <Message
-          model={{
-            message: "Hello! This is your Chatbot. You can ask me anything!!",
-            sentTime: "just now",
-            sender: "Joe",
-            direction: 2
-          }}
-        />
-      </MessageList>
-      <MessageInput placeholder="Type message here" />
-    </ChatContainer>
-  </MainContainer> */}
-
             <MainContainer>
               <ChatContainer>
                 {/* Message List */}
@@ -158,12 +142,24 @@ const ChatbotModal = ({ isOpen, onClose }) => {
                       }}
                     />
                   ))}
+                  {isMessageLoading && (
+                    <Flex
+                      className="loading-screen"
+                      justify-contents="center"
+                      align-items="center"
+                      textAlign="center"
+                      mt="150px"
+                      ml="200px"
+                    >
+                      <Spinner />
+                    </Flex>
+                  )}
                 </MessageList>
 
-                {/* Message Input */}
                 <MessageInput
                   placeholder="Type message here"
                   onSend={handleSendMessage} // Handle sending messages
+                  disabled={isMessageLoading}
                 />
               </ChatContainer>
             </MainContainer>

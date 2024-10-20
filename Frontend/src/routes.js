@@ -4,6 +4,7 @@ import PerformanceTrends from "views/Dashboard/PerformanceTrends.js";
 import CustomerFeedback from "views/Dashboard/CustomerFeedback.js";
 import GeogrpahicalCoverage from "views/Dashboard/Geography.js";
 import StrategicInitiatives from "views/Dashboard/StrategicInitiatives.js";
+import RecentArticles from "views/Dashboard/RecentArticles.js";
 // import Profile from "views/Dashboard/Profile.js";
 // import SignIn from "views/Pages/SignIn.js";
 // import SignUp from "views/Pages/SignUp.js";
@@ -42,8 +43,15 @@ var dashRoutes = [
   {
     path: "/StrategicInitiatives",
     name: "Strategic Initiatives",
-    icon: <CreditIcon color="inherit" />,
+    icon: <StatsIcon color="inherit" />,
     component: StrategicInitiatives,
+    layout: "/admin",
+  },
+  {
+    path: "/RecentArticles",
+    name: "Recent Articles",
+    icon: <CreditIcon color="inherit" />,
+    component: RecentArticles,
     layout: "/admin",
   },
 

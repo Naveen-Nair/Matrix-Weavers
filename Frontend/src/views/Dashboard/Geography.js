@@ -16,7 +16,6 @@ import React from "react";
 import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 import { useState } from "react";
-
 const apiData = {
   summary:
     "Croma currently operates in 5 states with a total of 10 stores. The company holds a market share of 12%, with its strongest presence in regions such as 15. Over the past year, it has experienced a growth rate of 5%. Croma currently operates in 5 states with a total of 10 stores.  The company holds a market share of 12%, with its strongest presence in regions such as 15.  Over the past year, it has experienced a growth rate of 5%.",
@@ -171,7 +170,7 @@ const companiesData = [
 ];
 
 export default function Dashboard() {
-  const [selcomp, selectCompany] = useState("reliance")
+  const [selcomp, selectCompany] = useState("reliance");
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }} gap="20px">
       <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
@@ -286,7 +285,7 @@ export default function Dashboard() {
         <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
           Detailed Overview
         </Text>
-        <CompanyDropDown setSelectedCompany={selectCompany}/>
+        <CompanyDropDown setSelectedCompany={selectCompany} />
       </Card>
 
       <Grid
