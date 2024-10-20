@@ -1,20 +1,7 @@
 // Chakra imports
 import {
-  Box,
-  Button,
-  CircularProgress,
-  CircularProgressLabel,
   Flex,
   Grid,
-  Icon,
-  Progress,
-  SimpleGrid,
-  Spacer,
-  Stack,
-  Stat,
-  StatHelpText,
-  StatLabel,
-  StatNumber,
   Table,
   Tbody,
   Text,
@@ -23,135 +10,126 @@ import {
   Tr,
   Td,
 } from "@chakra-ui/react";
-// Styles for the circular progressbar
-import medusa from "assets/img/cardimgfree.png";
-import {useState} from "react"
+import { useState } from "react";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
-import BarChart from "components/Charts/BarChart";
-import LineChart from "components/Charts/LineChart";
-import IconBox from "components/Icons/IconBox";
-// Icons
-import {
-  CartIcon,
-  DocumentIcon,
-  GlobeIcon,
-  RocketIcon,
-  StatsIcon,
-  WalletIcon,
-} from "components/Icons/Icons.js";
-import DashboardTableRow from "components/Tables/DashboardTableRow";
-import TimelineRow from "components/Tables/TimelineRow";
 import React, { useEffect } from "react";
-import { AiFillCheckCircle } from "react-icons/ai";
-import { BiHappy } from "react-icons/bi";
-import { BsArrowRight } from "react-icons/bs";
 import {
-  IoCheckmarkDoneCircleSharp,
-  IoEllipsisHorizontal,
-} from "react-icons/io5";
-// Data
-import {
-  barChartDataDashboard,
-  barChartOptionsDashboard,
-  lineChartDataDashboard,
-  lineChartOptionsDashboard,
-} from "variables/charts";
-import { dashboardTableData, timelineData } from "variables/general";
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
-import 'react-vertical-timeline-component/style.min.css';
-
+import "react-vertical-timeline-component/style.min.css";
 
 export default function StrategicInitiatives() {
-
-  const timeline_data = [{company:"A", title:"Title 1", subtitle: "Subtitle 1", description: "Description of the milestone", indetail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 2", subtitle: "Subtitle 2", description: "Description of the milestone", indetail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 3", subtitle: "Subtitle 3", description: "Description of the milestone", indetail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}, {company:"A", title:"Title 4", subtitle: "Subtitle 4", description: "Description of the milestone", indetail:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"}]
-  const [initiative, setInitiative] = useState(0)
+  const timeline_data = [
+    {
+      company: "A",
+      title: "Title 1",
+      subtitle: "Subtitle 1",
+      description: "Description of the milestone",
+      indetail:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      company: "A",
+      title: "Title 2",
+      subtitle: "Subtitle 2",
+      description: "Description of the milestone",
+      indetail:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      company: "A",
+      title: "Title 3",
+      subtitle: "Subtitle 3",
+      description: "Description of the milestone",
+      indetail:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      company: "A",
+      title: "Title 4",
+      subtitle: "Subtitle 4",
+      description: "Description of the milestone",
+      indetail:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+  ];
+  const [initiative, setInitiative] = useState(0);
 
   const strategic_table = [
     {
-      company:"A",
+      company: "A",
       investment_area: "Supply Chain",
       year: 2023,
       amount_invested: "$100M",
-      expected_impact: "10% cost savings"
+      expected_impact: "10% cost savings",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Technology Upgrades",
       year: 2022,
       amount_invested: "$200M",
-      expected_impact: "Faster deliveries"
+      expected_impact: "Faster deliveries",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Marketing",
       year: 2023,
       amount_invested: "$50M",
-      expected_impact: "Increased reach"
+      expected_impact: "Increased reach",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Customer Service",
       year: 2022,
       amount_invested: "$30M",
-      expected_impact: "Improved customer satisfaction"
+      expected_impact: "Improved customer satisfaction",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Store Expansion",
       year: 2021,
       amount_invested: "$40M",
-      expected_impact: "25 new stores opened"
+      expected_impact: "25 new stores opened",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Private Labels",
       year: 2023,
       amount_invested: "$70M",
-      expected_impact: "Increased profit margins by 12%"
+      expected_impact: "Increased profit margins by 12%",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "E-commerce Platform",
       year: 2023,
       amount_invested: "$150M",
-      expected_impact: "Enhanced online customer experience"
+      expected_impact: "Enhanced online customer experience",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "Sustainability Initiatives",
       year: 2022,
       amount_invested: "$60M",
-      expected_impact: "Reduced carbon footprint by 15%"
+      expected_impact: "Reduced carbon footprint by 15%",
     },
     {
-      company:"A",
+      company: "A",
       investment_area: "AI-based Customer Insights",
       year: 2021,
       amount_invested: "$90M",
-      expected_impact: "Optimized marketing campaigns"
-    }
-  ]
-  
+      expected_impact: "Optimized marketing campaigns",
+    },
+  ];
 
-  function initiativeClick(key){
+  function initiativeClick(key) {
     setInitiative(key);
   }
 
-  useEffect(()=>{
-
-  }, [initiative])
-
-
-
-
-
-
-
-
+  useEffect(() => {}, [initiative]);
 
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
@@ -162,33 +140,34 @@ export default function StrategicInitiatives() {
       >
         {/* Welcome Card */}
         <Card gridColumn="1 / -1" gridRow="1">
-          <CompanyDropDown/>
+          <CompanyDropDown />
         </Card>
-        
+
         {/* Satisfaction Rate */}
         <Card
           p="0px"
           // gridArea={{ md: "1 / 1 / 2 / 3", "2xl": "auto" }}
           // bgImage={medusa}
-          gridColumn={{ md: "1 / 2" }} gridRow="3 / 4"
+          gridColumn={{ md: "1 / 2" }}
+          gridRow="3 / 4"
           bgSize="cover"
           bgPosition="50%"
           padding="20px"
         >
           <CardBody w="100%" h="100%" display="flex" flexDirection="column">
-          <Text color="#fff" fontSize="1.9em" fontWeight="bold" mb="20px">
-            {timeline_data[initiative].title}
-          </Text>
-          <Text color="gray.400" fontSize="1.2em">
-            {timeline_data[initiative].indetail}
-          </Text>
+            <Text color="#fff" fontSize="1.9em" fontWeight="bold" mb="20px">
+              {timeline_data[initiative].title}
+            </Text>
+            <Text color="gray.400" fontSize="1.2em">
+              {timeline_data[initiative].indetail}
+            </Text>
           </CardBody>
         </Card>
 
         <Card p="10px" gridColumn={{ md: "1 / 2" }} gridRow="2 / 3">
-        <Table variant="simple" color="#fff">
+          <Table variant="simple" color="#fff">
             <Thead>
-              <Tr my=".8rem" ps="0px" color="gray.400" >
+              <Tr my=".8rem" ps="0px" color="gray.400">
                 <Th
                   ps="0px"
                   color="gray.400"
@@ -256,46 +235,36 @@ export default function StrategicInitiatives() {
               ))}
             </Tbody>
           </Table>
-          
         </Card>
-        
+
         {/* Referral Tracking */}
-        <Card  gridColumn={{ md: "2 / 3" }} gridRow="2 / 4">
-        
-        <VerticalTimeline>
-          { timeline_data.map((company, index) => (
-            <VerticalTimelineElement
-            key={index}
-            className="vertical-timeline-element--work"
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-            iconOnClick={()=>{initiativeClick(index)}}
-          >
-            <h3 className="vertical-timeline-element-title">{company["title"]}</h3>
-            <h4 className="vertical-timeline-element-subtitle">{company["subtitle"]}</h4>
-            <p>
-              {company["description"]}
-            </p>
-          
-          </VerticalTimelineElement>
-          ))
+        <Card gridColumn={{ md: "2 / 3" }} gridRow="2 / 4">
+          <VerticalTimeline>
+            {timeline_data.map((company, index) => (
+              <VerticalTimelineElement
+                key={index}
+                className="vertical-timeline-element--work"
+                iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+                iconOnClick={() => {
+                  initiativeClick(index);
+                }}
+              >
+                <h3 className="vertical-timeline-element-title">
+                  {company["title"]}
+                </h3>
+                <h4 className="vertical-timeline-element-subtitle">
+                  {company["subtitle"]}
+                </h4>
+                <p>{company["description"]}</p>
+              </VerticalTimelineElement>
+            ))}
 
-          }
-
-{/* More VerticalTimelineElement components */}
-
-</VerticalTimeline>
+            {/* More VerticalTimelineElement components */}
+          </VerticalTimeline>
         </Card>
-
-        
-
-        
-
-
       </Grid>
-      
-        
-        {/* Active Users */}
-        
+
+      {/* Active Users */}
     </Flex>
   );
 }

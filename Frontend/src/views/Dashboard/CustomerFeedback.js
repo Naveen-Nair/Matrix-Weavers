@@ -3,11 +3,9 @@ import React from "react";
 // Chakra imports
 import {
   Box,
-  Button,
   Flex,
   Grid,
   Icon,
-  Spacer,
   Text,
   Stack,
   Table,
@@ -21,7 +19,6 @@ import {
 } from "@chakra-ui/react";
 
 // Images
-import BackgroundCard1 from "assets/img/billing-background-card.png";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { BiHappy } from "react-icons/bi";
 import CommentsRow from "components/Tables/CommentsRow";
@@ -32,30 +29,7 @@ import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import GradientBorder from "components/GradientBorder/GradientBorder";
 import IconBox from "components/Icons/IconBox";
-import BillingRow from "components/Tables/BillingRow";
-import InvoicesRow from "components/Tables/InvoicesRow";
-import TransactionRow from "components/Tables/TransactionRow";
-
-// Icons
-import { FaPencilAlt, FaRegCalendarAlt } from "react-icons/fa";
-import { IoEllipsisHorizontalSharp } from "react-icons/io5";
-import { RiMastercardFill } from "react-icons/ri";
-import {
-  BillIcon,
-  GraphIcon,
-  MastercardIcon,
-  VisaIcon,
-} from "components/Icons/Icons";
-
-// Data
-import {
-  billingData,
-  invoicesData,
-  newestTransactions,
-  olderTransactions,
-} from "variables/general";
 
 function CustomerFeedback() {
   const feedbackData = [

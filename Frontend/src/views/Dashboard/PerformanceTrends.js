@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Chakra imports
-import {
-  Flex,
-  Table,
-  Tbody,
-  Icon,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  Box,
-  Stack,
-  Heading,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Flex, Text, Box, Stack, Heading, SimpleGrid } from "@chakra-ui/react";
 
 // Custom components
 import Card from "components/Card/Card.js";

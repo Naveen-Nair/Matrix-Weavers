@@ -11,10 +11,6 @@ import {
   SimpleGrid,
   Spacer,
   Stack,
-  Stat,
-  StatHelpText,
-  StatLabel,
-  StatNumber,
   Table,
   Tbody,
   Text,
@@ -34,8 +30,6 @@ import IconBox from "components/Icons/IconBox";
 // Icons
 import {
   CartIcon,
-  DocumentIcon,
-  GlobeIcon,
   RocketIcon,
   StatsIcon,
   WalletIcon,
