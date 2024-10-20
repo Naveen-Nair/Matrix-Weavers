@@ -11,14 +11,11 @@ const path = require("path");
 //     family: 4 // Use IPv4, skip trying IPv6
 // })
 mongoose
-  .connect(
-    process.env.MONGODB_URI,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      family: 4, // Use IPv4, skip trying IPv6
-    }
-  )
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    family: 4, // Use IPv4, skip trying IPv6
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })
