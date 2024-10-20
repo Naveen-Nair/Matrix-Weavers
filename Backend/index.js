@@ -12,7 +12,7 @@ const path = require("path");
 // })
 mongoose
   .connect(
-    "mongodb+srv://user_1_spider:user_1_spider@cluster0.gpmuqfi.mongodb.net/Chroma_app",
+    process.env.MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -36,5 +36,5 @@ app.get("/", (req, res, next) => {
   // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-let port = process.env.BACKEND_PORT;
+let port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening to port: ${port}`));

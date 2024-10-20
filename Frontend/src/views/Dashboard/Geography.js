@@ -15,6 +15,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import React from "react";
 import MapStateHeatMap from "../../components/MapStateHeatMap/index.js";
 import CompanyDropDown from "../../components/CompanyDropdown/index.js";
+import { useState } from "react";
 
 const apiData = {
   summary:

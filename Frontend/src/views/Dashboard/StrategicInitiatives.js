@@ -34,6 +34,7 @@ export default function StrategicInitiatives() {
     fetchInitiativesTables().then((res)=>{
       console.log(res)
       const t = res;
+      let i=0
       for(i = 0; i<res.length; i++){
         t[i]["key"] = i;
       }
