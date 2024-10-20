@@ -1,4 +1,4 @@
 node_modules
 package-lock.json
 build
-.DS_Store
+insert_data_test.js.DS_Store

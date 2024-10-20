@@ -12,7 +12,7 @@ import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 
 const PerformanceTrends = () => {
   const [companiesData, setCompaniesData] = useState([]);
-
+  const [selcomp, selectCompany] = useState("reliance")
   useEffect(() => {
     const fetchAllCompaniesData = async () => {
       const companies = [
@@ -41,7 +41,7 @@ const PerformanceTrends = () => {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card gridColumn="1 / -1" gridRow="1">
-        <CompanyDropDown />
+        <CompanyDropDown setSelectedCompany={selectCompany}/>
       </Card>
       <PerformanceTrendsSummary />
 

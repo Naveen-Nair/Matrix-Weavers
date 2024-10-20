@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Table, Thead, Tbody, Th, Tr, Select } from '@chakra-ui/react'; // Adjust import based on your UI library
 import TablesTableRow from 'components/Tables/TablesTableRow'; // Import your row component
 
-const CompanyTable = ({ }) => {
-  const [selectedCompany, setSelectedCompany] = useState('');
+const CompanyTable = ({setSelectedCompany}) => {
+  // const [selectedCompany, setSelectedCompany] = useState('');
 
   // Function to handle company selection
   const handleCompanyChange = (event) => {
@@ -20,11 +20,17 @@ const CompanyTable = ({ }) => {
         mb={4} // Margin-bottom for spacing
         style={{color:'white', fontColor:'white'}}
       >
-        <option value='Reliance Digital'>Reliance Digital</option>
+        {/* <option value='Reliance Digital'>Reliance Digital</option>
         <option value='Vijay Sales'>Vijay Sales</option>
         <option value='Aditya Vision'>Aditya Vision</option>
         <option value='Poojara'>Poojara</option>
-        <option value='Bajaj Electronics'>Bajaj Electronics</option>
+        <option value='Bajaj Electronics'>Bajaj Electronics</option> */}
+
+        <option value='reliance'>Reliance Digital</option>
+        <option value='vijaySales'>Vijay Sales</option>
+        <option value='Aditya Vision'>Aditya Vision</option>
+        <option value='Poojara'>Poojara</option>
+        <option value='bajaj'>Bajaj Electronics</option>
       </Select>
     </div>
   );

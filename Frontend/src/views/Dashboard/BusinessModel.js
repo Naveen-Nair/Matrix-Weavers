@@ -12,7 +12,7 @@ import {
   Td,
   VStack,
 } from "@chakra-ui/react";
-
+import { useState } from "react";
 import ChannelBreakdown from "../graphs/ChannelBreakdown.js";
 import ProductPortfolio from "../graphs/ProductPortfolio.js";
 import CustomerBreakDown from "../graphs/CustomerBreakdown.js";
@@ -22,6 +22,7 @@ import CompanyDropDown from "../../components/CompanyDropdown/index.js";
 import Card from "components/Card/Card.js";
 
 export default function BusinessModel() {
+  const [selcomp, selectCompany] = useState("reliance")
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
       <BusinessModelAnalysis data={businessModelData} />
@@ -43,7 +44,7 @@ export default function BusinessModel() {
         <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
           Detailed Overview
         </Text>
-        <CompanyDropDown />
+        <CompanyDropDown setSelectedCompany={selectCompany}/>
       </Card>
       <BusinessModelSummary />
       <BusinessModelInsights />

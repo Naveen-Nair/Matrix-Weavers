@@ -170,6 +170,7 @@ const companiesData = [
 ];
 
 export default function Dashboard() {
+  const [selcomp, selectCompany] = useState("reliance")
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }} gap="20px">
       <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
@@ -284,7 +285,7 @@ export default function Dashboard() {
         <Text color="#fff" fontSize="lg" fontWeight="bold" mb="20px">
           Detailed Overview
         </Text>
-        <CompanyDropDown />
+        <CompanyDropDown setSelectedCompany={selectCompany}/>
       </Card>
 
       <Grid

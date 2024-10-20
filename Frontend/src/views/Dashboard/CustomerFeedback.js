@@ -17,7 +17,7 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-
+import { useState } from "react";
 // Images
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { BiHappy } from "react-icons/bi";
@@ -292,6 +292,7 @@ function CustomerFeedback() {
   };
 
   const dateRange = "17 - 20/10/2024";
+  const [selcomp, selectCompany] = useState("reliance")
   return (
     <Flex
       direction="column"
@@ -305,7 +306,7 @@ function CustomerFeedback() {
         <Text color="#fff" fontSize="lg" fontWeight="bold">
           Detailed Overview
         </Text>
-        <CompanyDropDown />
+        <CompanyDropDown setSelectedCompany={selectCompany}/>
       </Card>
       <Grid
         templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
